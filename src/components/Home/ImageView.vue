@@ -13,15 +13,21 @@
         </div>
       </div>
     </div>
-    <div class="sidebarContainer">
+    <!-- TODO otherwise button above:
+    <ImageCategoryButton>
+      <Sidebar />
+    </ ImageCategoryButton> -->
+    <div v-if="windowWidth > 800" class="sidebarContainer">
       <Sidebar :activeCategory="'random'" :handleItemClick="handleItemClick" />
     </div>
   </div>
-  <div class="loader" v-if="!maxImagesReached" @click="showMore()">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+  <div class="loaderContainer">
+    <div class="loader" v-if="!maxImagesReached" @click="showMore()">
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
   </div>
   <div class="loadMoreIdentifier" />
 </template>
@@ -40,6 +46,7 @@ interface ImageViewData {
   maxImagesReached: boolean;
   isLoading: boolean;
   numberImagesLoaded: number;
+  windowWidth: number;
 }
 
 const numberImageBlock = 10;
@@ -54,6 +61,7 @@ export default defineComponent({
       maxImagesReached: false,
       numberImagesLoaded: 0,
       isLoading: false,
+      windowWidth: window.innerWidth,
     };
   },
   components: { Sidebar },
@@ -129,22 +137,22 @@ export default defineComponent({
       const maxShown = this.allImages.length;
       let newImages;
       if (numberNextShown >= maxShown) {
-        newImages = this.allImages.slice(
-          numberCurrentlyShown,
-          maxShown,
-        );
+        newImages = this.allImages.slice(numberCurrentlyShown, maxShown);
         this.maxImagesReached = true;
       } else {
-        newImages = this.allImages.slice(
-          numberCurrentlyShown,
-          numberNextShown,
-        );
+        newImages = this.allImages.slice(numberCurrentlyShown, numberNextShown);
       }
       this.shownImagesBlocks.push(newImages);
+    },
+    onResize() {
+      this.windowWidth = window.innerWidth;
     },
   },
   mounted() {
     this.scroll();
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
   },
 });
 </script>
@@ -154,10 +162,16 @@ export default defineComponent({
   display: flex;
 }
 .container {
-  padding-left: 20%;
-  width: 60%;
+  width: 100%;
   justify-content: center;
 }
+@media (min-width: 800px) {
+  .container {
+    padding-left: 20%;
+    width: 60%;
+  }
+}
+
 .image {
   max-width: 100%;
 }
@@ -169,6 +183,10 @@ export default defineComponent({
 }
 
 /* loader */
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+}
 .loader {
   display: inline-block;
   position: relative;
@@ -204,5 +222,4 @@ export default defineComponent({
     transform: rotate(360deg);
   }
 }
-
 </style>
