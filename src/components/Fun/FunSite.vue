@@ -1,9 +1,30 @@
-<template>
+<template :key="tabKey">
   <div class="wrapper" v-for="(element, key) in emojis" :key="key">
-    <div @click="handleClick(element)" class="emoji" :id="element.id">{{element.emoji}}</div>
+    <div @click="handleClick(element)" class="emoji" :id="element.id">
+      {{ element.emoji }}
+    </div>
     <div class="savedWrapper">
-            Saved Animals {{savedAnimals.length}} / 6
-            <div v-for="(animal, key) in savedAnimals" :key="key">{{animal}}</div>
+      <div>Time {{ time }}</div>
+      <div>Lifes {{ lifes }} / 2</div>
+      Saved Animals {{ savedAnimals.length }} / 6
+      <div v-for="(animal, key) in savedAnimals" :key="key">{{ animal }}</div>
+    </div>
+  </div>
+  <div v-if="hasLost || hasWon" class="popup">
+    <div class="overlay" />
+    <div class="popupContent">
+      <div v-if="hasLost">
+        😿😿😿 You couldn't save all animals.
+      </div>
+      <div v-else>
+        😸😸😸 You saved all animals!
+        <button  @click="setPrice()">Click here to get your price</button>
+        <div v-if="price">It's a giphy 🎉
+            <iframe :src="price" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/myuLckXB7OjfGw1gSb">via GIPHY</a></p>
+        </div>
+      </div>
+      <button @click="resetAndStart()">Try again</button>
+      <button>Close</button>
     </div>
   </div>
 </template>
@@ -15,36 +36,50 @@ interface FunData {
   firstIteration: boolean;
   emojis: any;
   savedAnimals: [];
+  lifes: number;
+  hasLost: boolean;
+  hasWon: boolean;
+  time: number;
+  price: string;
+  tabKey: number;
 }
+const prices = ["https://giphy.com/embed/WU8nnAdxZWeM8", "https://media.giphy.com/media/myuLckXB7OjfGw1gSb/giphy.gif"];
+const emojis = [
+  { emoji: "🐒", id: "monkey" },
+  { emoji: "🦍", id: "gorilla" },
+  { emoji: "🐧", id: "penguin" },
+  { emoji: "🦊", id: "fox" },
+  { emoji: "🦙", id: "lama" },
+  { emoji: "🐥", id: "chicken" },
+  { emoji: "☠️", id: "skull" },
+  { emoji: "🤯", id: "head" },
+  { emoji: "💩", id: "poo" },
+  { emoji: "🗡️", id: "sword" },
+  { emoji: "🔫", id: "gun" },
+  { emoji: "🔪", id: "knife" },
+  { emoji: "🧨", id: "dynamite" },
+  { emoji: "🚽", id: "toilet" },
+  { emoji: "💣", id: "bomb" },
+  { emoji: "💥", id: "explosion" },
+  { emoji: "🔥", id: "fire" },
+  { emoji: "❄️", id: "ice" },
+  { emoji: "⚡", id: "lightning" },
+];
+const animalIds = ["monkey", "gorilla", "penguin", "fox", "lama", "chicken"];
 
 export default defineComponent({
   name: "Fun",
   data(): FunData {
     return {
-      emojis: [
-        { emoji: "🐒", id: "monkey" },
-        { emoji: "🦍", id: "gorilla" },
-        { emoji: "🐧", id: "penguin" },
-        { emoji: "🦊", id: "fox" },
-        { emoji: "🦙", id: "lama" },
-        { emoji: "🐥", id: "chicken" },
-        { emoji: "☠️", id: "skull" },
-        { emoji: "🤯", id: "head" },
-        { emoji: "💩", id: "poo" },
-        { emoji: "🗡️", id: "sword" },
-        { emoji: "🔫", id: "gun" },
-        { emoji: "🔪", id: "knife" },
-        { emoji: "🧨", id: "dynamite" },
-        { emoji: "🚽", id: "toilet" },
-        { emoji: "💣", id: "bomb" },
-        { emoji: "💥", id: "explosion" },
-        { emoji: "🔥", id: "fire" },
-        { emoji: "❄️", id: "ice" },
-        { emoji: "⚡", id: "lightning" },
-
-      ],
+      emojis,
       firstIteration: true,
       savedAnimals: [],
+      lifes: 2,
+      hasLost: false,
+      hasWon: false,
+      time: 60,
+      price: "",
+      tabKey: 0,
     };
   },
   methods: {
@@ -93,40 +128,83 @@ export default defineComponent({
       setTimeout(() => {
         element.style.left = `${newq[0]}px`;
         element.style.top = `${newq[1]}px`;
-        this.animateDiv(element);
+        if (!this.hasLost && !this.hasWon) {
+          this.animateDiv(element);
+        }
       }, speed - 10);
     },
     calcSpeed(prev, next) {
       const x = Math.abs(prev[1] - next[1]);
       const y = Math.abs(prev[0] - next[0]);
-
       const greatest = x > y ? x : y;
-
       const speedModifier = 0.3;
-
       const speed = Math.ceil(greatest / speedModifier);
-
       return speed;
     },
     handleClick(element: any) {
-      if (["monkey", "gorilla", "penguin", "fox", "lama", "chicken"].includes(element.id)) {
+      if (this.hasWon || this.hasLost) {
+        return;
+      }
+      if (
+        animalIds.includes(
+          element.id,
+        )
+      ) {
         // eslint-disable-next-line no-alert
         alert(`${element.id} saved`);
-        document.getElementById(`${element.id}`).remove();
+        document.getElementById(`${element.id}`).style.display = "none";
         this.savedAnimals.push(element.emoji);
       } else {
         // eslint-disable-next-line no-alert
-        alert("Thats no animal :(");
+        alert(`You touched the dangerous ${element.id}. You lost one life.`);
+        this.lifes -= 1;
+      }
+      if (this.lifes === 0) {
+        this.hasLost = true;
+      }
+      if (this.savedAnimals.length === 6) {
+        this.hasWon = true;
+      }
+    },
+    startGame() {
+      setInterval(this.reduceTime, 1000);
+      setTimeout(() => {
+        this.firstIteration = false;
+      }, 1000);
+      document.querySelectorAll(".emoji").forEach((element) => {
+        this.animateDiv(element);
+      });
+    },
+    resetAndStart() {
+      this.firstIteration = true;
+      this.savedAnimals = [];
+      this.lifes = 2;
+      this.hasLost = false;
+      this.hasWon = false;
+      this.time = 60;
+      this.price = "";
+      this.tabKey += 1;
+      animalIds.forEach((id) => {
+        document.getElementById(id).style.display = "block";
+      });
+      this.startGame();
+    },
+    reduceTime() {
+      if (!this.hasLost && !this.hasWon) {
+        this.time -= 1;
+      }
+      if (this.time === 0) {
+        this.hasLost = true;
+      }
+    },
+    setPrice() {
+      if (!this.price) {
+        this.price = prices[Math.floor(Math.random() * prices.length)];
       }
     },
   },
   mounted() {
-    setTimeout(() => {
-      this.firstIteration = false;
-    }, 1000);
-    document.querySelectorAll(".emoji").forEach((element) => {
-      this.animateDiv(element);
-    });
+    this.startGame();
   },
 });
 </script>
@@ -147,5 +225,31 @@ export default defineComponent({
   width: 50px;
   height: 50px;
   position: absolute;
+}
+.popup {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+}
+.popupContent {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  z-index: 4;
 }
 </style>
