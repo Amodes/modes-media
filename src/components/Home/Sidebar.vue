@@ -1,14 +1,14 @@
 <template>
   <ul class="container">
     <li class="item shuffle" @click="onClickCategory('random')">
-      <img class="icon" src="../../assets/icons/shuffle.svg" />Shuffle</li>
+      <img class="icon" src="../../assets/icons/shuffle.svg" />Shuffle
+    </li>
     <li
       v-for="(item, key) in navigationItems"
       :key="key"
       @click="onClickCategory(key)"
       class="item"
     >
-
       {{ item.title }}
     </li>
   </ul>
@@ -33,12 +33,16 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 30px;
+  padding: 30px 0;
+}
+@media (min-width: 800px) {
+  .container {
+    padding: 30px 0 0 0;
+  }
 }
 
 .item {
@@ -50,6 +54,9 @@ export default defineComponent({
   display: flex;
 }
 
-.icon {padding-right: 5px; width: 20px; height: 20px}
-
- </style>
+.icon {
+  padding-right: 5px;
+  width: 20px;
+  height: 20px;
+}
+</style>

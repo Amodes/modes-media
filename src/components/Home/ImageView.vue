@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" :style="{ overflowY: `hidden` }">
     <div class="container">
       <div v-for="(shownImages, index) in shownImagesBlocks" :key="index">
         <div v-show="checkIfBlockLoaded(index)">
@@ -13,12 +13,25 @@
         </div>
       </div>
     </div>
-    <!-- TODO otherwise button above:
-    <ImageCategoryButton>
-      <Sidebar />
-    </ ImageCategoryButton> -->
-    <div v-if="windowWidth > 800" class="sidebarContainer">
-      <Sidebar :activeCategory="'random'" :handleItemClick="handleItemClick" />
+    <button
+      v-if="isMobile"
+      class="openCategories"
+      @click="toggleOpenCategories"
+    >
+      🗺️
+    </button>
+    <div
+      v-if="!isMobile || mobileCategoriesOpen"
+      class="sidebarWrapper"
+      :style="{ top: `${scrollYPosition}px` }"
+    >
+      <div class="overlay" />
+      <div class="sidebarContainer">
+        <Sidebar
+          :activeCategory="'random'"
+          :handleItemClick="handleItemClick"
+        />
+      </div>
     </div>
   </div>
   <div class="loaderContainer">
@@ -36,7 +49,7 @@
 import { defineComponent } from "vue";
 
 import Sidebar from "./Sidebar.vue";
-import { imageContent, ImageContentElement } from "../../content";
+import { imageContent } from "../../content";
 import { getRandomImages } from "../../helpers/utilities";
 
 interface ImageViewData {
@@ -46,7 +59,9 @@ interface ImageViewData {
   maxImagesReached: boolean;
   isLoading: boolean;
   numberImagesLoaded: number;
-  windowWidth: number;
+  isMobile: boolean;
+  mobileCategoriesOpen: boolean;
+  scrollYPosition: number;
 }
 
 const numberImageBlock = 10;
@@ -61,7 +76,9 @@ export default defineComponent({
       maxImagesReached: false,
       numberImagesLoaded: 0,
       isLoading: false,
-      windowWidth: window.innerWidth,
+      isMobile: window.innerWidth < 800,
+      mobileCategoriesOpen: false,
+      scrollYPosition: 0,
     };
   },
   components: { Sidebar },
@@ -75,11 +92,10 @@ export default defineComponent({
   },
   methods: {
     handleItemClick(clickedCategory: keyof typeof imageContent | "random") {
+      if (this.activeCategory === clickedCategory) return;
       this.isLoading = true;
       this.maxImagesReached = false;
       this.numberImagesLoaded = 0;
-
-      this.activeCategory = clickedCategory;
 
       if (clickedCategory === "random") {
         const randomImages = getRandomImages(50);
@@ -88,6 +104,19 @@ export default defineComponent({
       } else {
         this.allImages = imageContent[clickedCategory].paths;
         this.shownImagesBlocks = [this.allImages.slice(0, numberImageBlock)];
+      }
+      if (this.mobileCategoriesOpen) {
+        this.toggleOpenCategories();
+      }
+
+      this.activeCategory = clickedCategory;
+    },
+    toggleOpenCategories() {
+      this.mobileCategoriesOpen = !this.mobileCategoriesOpen;
+      if (this.mobileCategoriesOpen) {
+        document.querySelector("body").style.overflowY = "hidden";
+      } else {
+        document.querySelector("body").style.overflowY = "auto";
       }
     },
     onImageLoad() {
@@ -113,20 +142,21 @@ export default defineComponent({
       const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
       return isVisible;
     },
-    scroll() {
-      window.onscroll = () => {
-        const scrolledTo = document.querySelector(".loadMoreIdentifier");
-        if (
-          scrolledTo
-          && this.hasScrolledIntoElement(scrolledTo)
-          && !this.isLoading
-        ) {
-          this.isLoading = true;
-          setTimeout(() => {
-            this.showMore();
-          }, 500);
-        }
-      };
+    onScroll() {
+      // needed for position of categories overlay on mobile
+      this.scrollYPosition = window.scrollY;
+      // needed for load more logic
+      const scrolledTo = document.querySelector(".loadMoreIdentifier");
+      if (
+        scrolledTo
+        && this.hasScrolledIntoElement(scrolledTo)
+        && !this.isLoading
+      ) {
+        this.isLoading = true;
+        setTimeout(() => {
+          this.showMore();
+        }, 500);
+      }
     },
     showMore() {
       let numberCurrentlyShown = 0;
@@ -145,14 +175,16 @@ export default defineComponent({
       this.shownImagesBlocks.push(newImages);
     },
     onResize() {
-      this.windowWidth = window.innerWidth;
+      this.isMobile = window.innerWidth < 800;
     },
   },
   mounted() {
-    this.scroll();
-    this.$nextTick(() => {
-      window.addEventListener("resize", this.onResize);
-    });
+    window.addEventListener("resize", this.onResize);
+    window.addEventListener("scroll", this.onScroll);
+  },
+  destroy() {
+    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onResize);
   },
 });
 </script>
@@ -175,11 +207,43 @@ export default defineComponent({
 .image {
   max-width: 100%;
 }
-.sidebarContainer {
+.sidebarWrapper {
   width: 20%;
+}
+@media (max-width: 800px) {
+  .sidebarWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+  }
+
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.8;
+  }
+
+  .sidebarContainer {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: calc(100% - 40px);
+    background-color: #fff;
+    opacity: 0.8;
+    border-radius: 4px;
+  }
 }
 .loadMoreIdentifier {
   height: 1px;
+}
+.openCategories {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-size: 40px;
+  z-index: 2;
 }
 
 /* loader */
@@ -190,7 +254,7 @@ export default defineComponent({
 .loader {
   display: inline-block;
   position: relative;
-  width: 80px;
+  width: 40px;
   height: 80px;
 }
 .loader div {

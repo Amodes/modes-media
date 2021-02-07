@@ -1,8 +1,10 @@
 <template>
   <div class="topBarContainer">
     <div class="name">Alexander Modes</div>
-    <router-link to="/">Photography</router-link>
-    <router-link to="/about">About</router-link>
+    <div class="linkContainer">
+      <router-link class="linkItem" to="/">Photography</router-link>
+      <router-link class="linkItem" to="/about">About</router-link>
+    </div>
     <div class="socialMedia">
       <div class="row">
         <div class="icon">
@@ -53,7 +55,6 @@ export default defineComponent({
 .topBarContainer {
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: 20px;
   box-sizing: border-box;
@@ -62,15 +63,17 @@ export default defineComponent({
   .topBarContainer {
     padding: 20px 0 20px 20%;
     width: 80%;
+    align-items: center;
   }
 }
 .name {
   width: 100px;
   font-family: "Playfair Display", serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   border-radius: 2px;
 }
+
 .socialMedia {
   display: flex;
   flex-direction: column;
@@ -89,11 +92,29 @@ img {
   width: 15px;
 }
 
-path {
-  stroke: green;
-}
 .row {
   display: flex;
   align-items: center;
+}
+.linkContainer {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .linkContainer {
+    width: 30%;
+    flex-direction: row;
+    justify-content: space-around;
+    display: flex;
+  }
+}
+
+@media (max-width: 800px) {
+  .linkItem {
+    padding-bottom: 10px;
+  }
 }
 </style>
