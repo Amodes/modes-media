@@ -13,18 +13,34 @@
   <div v-if="hasLost || hasWon" class="popup">
     <div class="overlay" />
     <div class="popupContent">
-      <div v-if="hasLost">
-        😿😿😿 You couldn't save all animals.
-      </div>
-      <div v-else>
-        😸😸😸 You saved all animals!
-        <button  @click="setPrice()">Click here to get your price</button>
-        <div v-if="price">It's a giphy 🎉
-            <iframe :src="price" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/myuLckXB7OjfGw1gSb">via GIPHY</a></p>
+      <div v-if="hasLost">😿😿😿 You couldn't save all animals.</div>
+      <div class="wonContainer" v-else>
+        <div class="wonTitle">😸😸😸 You saved all animals!</div>
+        <button v-if="!price" class="button" @click="setPrice()">
+          🎁 Get your price
+        </button>
+        <div class="price" v-if="price">
+          <div class="priceTitle">You won a giphy 🎉</div>
+          <iframe
+            :src="price"
+            width="100%"
+            height="300px"
+            frameBorder="0"
+            class="giphy-embed"
+            style="pointer-events: none"
+            allowFullScreen
+          ></iframe>
+          <p>
+            <a href="https://giphy.com/gifs/myuLckXB7OjfGw1gSb">via GIPHY</a>
+          </p>
         </div>
       </div>
-      <button @click="resetAndStart()">Try again</button>
-      <button>Close</button>
+      <div class="bottomButtonBar">
+        <button class="button restart" @click="resetAndStart()">
+          ♻️ Try again
+        </button>
+        <button class="button">✖️ Close</button>
+      </div>
     </div>
   </div>
 </template>
@@ -43,7 +59,10 @@ interface FunData {
   price: string;
   tabKey: number;
 }
-const prices = ["https://giphy.com/embed/WU8nnAdxZWeM8", "https://media.giphy.com/media/myuLckXB7OjfGw1gSb/giphy.gif"];
+const prices = [
+  "https://giphy.com/embed/WU8nnAdxZWeM8",
+  "https://giphy.com/embed/myuLckXB7OjfGw1gSb",
+];
 const emojis = [
   { emoji: "🐒", id: "monkey" },
   { emoji: "🦍", id: "gorilla" },
@@ -145,11 +164,7 @@ export default defineComponent({
       if (this.hasWon || this.hasLost) {
         return;
       }
-      if (
-        animalIds.includes(
-          element.id,
-        )
-      ) {
+      if (animalIds.includes(element.id)) {
         // eslint-disable-next-line no-alert
         alert(`${element.id} saved`);
         document.getElementById(`${element.id}`).style.display = "none";
@@ -221,10 +236,16 @@ export default defineComponent({
 }
 .emoji {
   cursor: pointer;
-  z-index: 10;
+  z-index: 2;
   width: 50px;
   height: 50px;
   position: absolute;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .popup {
   width: 100%;
@@ -247,9 +268,51 @@ export default defineComponent({
   opacity: 0.5;
 }
 .popupContent {
+  width: 80%;
+  max-height: 90%;
   padding: 20px;
   background-color: #fff;
   border-radius: 4px;
   z-index: 4;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wonContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.wonTitle {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.price {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+@media (max-width: 800px) {
+  .price {
+    flex-direction: column;
+  }
+}
+.bottomButtonBar {
+  padding-top: 10px;
+  display: flex;
+  width: 230px;
+  justify-content: space-between;
+}
+.button {
+  padding: 10px;
+  background-color: #abab;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+.button:hover {
+  background-color: rgba(117, 128, 117, 0.673);
 }
 </style>
