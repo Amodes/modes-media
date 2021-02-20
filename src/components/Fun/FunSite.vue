@@ -1,318 +1,156 @@
-<template :key="tabKey">
-  <div class="wrapper" v-for="(element, key) in emojis" :key="key">
-    <div @click="handleClick(element)" class="emoji" :id="element.id">
-      {{ element.emoji }}
-    </div>
-    <div class="savedWrapper">
-      <div>Time {{ time }}</div>
-      <div>Lifes {{ lifes }} / 2</div>
-      Saved Animals {{ savedAnimals.length }} / 6
-      <div v-for="(animal, key) in savedAnimals" :key="key">{{ animal }}</div>
-    </div>
-  </div>
-  <div v-if="hasLost || hasWon" class="popup">
-    <div class="overlay" />
-    <div class="popupContent">
-      <div v-if="hasLost">😿😿😿 You couldn't save all animals.</div>
-      <div class="wonContainer" v-else>
-        <div class="wonTitle">😸😸😸 You saved all animals!</div>
-        <button v-if="!price" class="button" @click="setPrice()">
-          🎁 Get your price
-        </button>
-        <div class="price" v-if="price">
-          <div class="priceTitle">You won a giphy 🎉</div>
-          <iframe
-            :src="price"
-            width="100%"
-            height="300px"
-            frameBorder="0"
-            class="giphy-embed"
-            style="pointer-events: none"
-            allowFullScreen
-          ></iframe>
-          <p>
-            <a href="https://giphy.com/gifs/myuLckXB7OjfGw1gSb">via GIPHY</a>
-          </p>
+<template>
+  <div class="funOverlay" v-if="showPopup && !popupDismissed">
+    <div class="bottomPopup bottomPopupPosition">
+      <div v-if="!gameStarted">
+        Are you bored?
+        <div class="buttonContainer">
+          <button class="button yesNoButton" @click="hideAndEndGame()">
+            No
+          </button>
+          <button class="button yesNoButton" @click="startGame()">Yes</button>
         </div>
       </div>
-      <div class="bottomButtonBar">
-        <button class="button restart" @click="resetAndStart()">
-          ♻️ Try again
+      <div v-else>
+        <button class="button" @click="hideAndEndGame()">
+          Stop that trash game!
         </button>
-        <button class="button">✖️ Close</button>
       </div>
+    </div>
+    <div v-if="gameStarted" class="game">
+      <div v-if="countdown > 0">
+       Find and click on the animals to save them!
+       Game starts in {{countdown}}
+       </div>
+      <Game v-else :onClose="hideAndEndGame" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import Game from "./Game.vue";
 
-interface FunData {
-  firstIteration: boolean;
-  emojis: any;
-  savedAnimals: [];
-  lifes: number;
-  hasLost: boolean;
-  hasWon: boolean;
-  time: number;
-  price: string;
-  tabKey: number;
+const TIME_UNTIL_POPUP = 2;
+const START_GAME_TEXT = "makethewebsitegreatagain";
+
+interface FunSiteData {
+  activeTime: number;
+  countdown: number;
+  gameStarted: boolean;
+  showPopup: boolean;
+  popupDismissed: boolean;
+  userEnteredText: string;
 }
-const prices = [
-  "https://giphy.com/embed/WU8nnAdxZWeM8",
-  "https://giphy.com/embed/myuLckXB7OjfGw1gSb",
-];
-const emojis = [
-  { emoji: "🐒", id: "monkey" },
-  { emoji: "🦍", id: "gorilla" },
-  { emoji: "🐧", id: "penguin" },
-  { emoji: "🦊", id: "fox" },
-  { emoji: "🦙", id: "lama" },
-  { emoji: "🐥", id: "chicken" },
-  { emoji: "☠️", id: "skull" },
-  { emoji: "🤯", id: "head" },
-  { emoji: "💩", id: "poo" },
-  { emoji: "🗡️", id: "sword" },
-  { emoji: "🔫", id: "gun" },
-  { emoji: "🔪", id: "knife" },
-  { emoji: "🧨", id: "dynamite" },
-  { emoji: "🚽", id: "toilet" },
-  { emoji: "💣", id: "bomb" },
-  { emoji: "💥", id: "explosion" },
-  { emoji: "🔥", id: "fire" },
-  { emoji: "❄️", id: "ice" },
-  { emoji: "⚡", id: "lightning" },
-];
-const animalIds = ["monkey", "gorilla", "penguin", "fox", "lama", "chicken"];
 
 export default defineComponent({
-  name: "Fun",
-  data(): FunData {
+  name: "FunSite",
+  components: { Game },
+  data(): FunSiteData {
     return {
-      emojis,
-      firstIteration: true,
-      savedAnimals: [],
-      lifes: 2,
-      hasLost: false,
-      hasWon: false,
-      time: 60,
-      price: "",
-      tabKey: 0,
+      activeTime: 0,
+      countdown: 5,
+      gameStarted: false,
+      showPopup: false,
+      popupDismissed: false,
+      userEnteredText: "",
     };
   },
   methods: {
-    makeNewPosition() {
-      const h = window.innerWidth;
-      const w = window.innerHeight;
-      const nh = Math.floor(Math.random() * h);
-      const nw = Math.floor(Math.random() * w);
-      return [nh, nw];
+    startTimer() {
+      setInterval(this.increaseTime, 1000);
     },
-
-    animateDiv(element) {
-      const newq = this.makeNewPosition();
-      const top = element.offsetTop;
-      const left = element.offsetLeft;
-      const speed = this.calcSpeed([top, left], newq);
-      const negativeX = Math.random() < 0.5;
-      const negativeY = Math.random() < 0.5;
-      let newX;
-      let newY;
-      if (negativeX) {
-        newX = `-${newq[0]}px`;
-      } else {
-        newX = `${newq[0]}px`;
-      }
-
-      if (negativeY) {
-        newY = `-${newq[1]}px`;
-      } else {
-        newY = `${newq[1]}px`;
-      }
-
-      if (Math.random() > 0.2 || this.firstIteration) {
-        element.animate(
-          [
-            { transform: `translateX(${newX})` },
-            { transform: `translateY(${newY})` },
-            { transform: "rotate(180deg)" },
-          ],
-          {
-            duration: speed,
-          },
-        );
-      }
-
-      setTimeout(() => {
-        element.style.left = `${newq[0]}px`;
-        element.style.top = `${newq[1]}px`;
-        if (!this.hasLost && !this.hasWon) {
-          this.animateDiv(element);
-        }
-      }, speed - 10);
-    },
-    calcSpeed(prev, next) {
-      const x = Math.abs(prev[1] - next[1]);
-      const y = Math.abs(prev[0] - next[0]);
-      const greatest = x > y ? x : y;
-      const speedModifier = 0.3;
-      const speed = Math.ceil(greatest / speedModifier);
-      return speed;
-    },
-    handleClick(element: any) {
-      if (this.hasWon || this.hasLost) {
-        return;
-      }
-      if (animalIds.includes(element.id)) {
-        // eslint-disable-next-line no-alert
-        alert(`${element.id} saved`);
-        document.getElementById(`${element.id}`).style.display = "none";
-        this.savedAnimals.push(element.emoji);
-      } else {
-        // eslint-disable-next-line no-alert
-        alert(`You touched the dangerous ${element.id}. You lost one life.`);
-        this.lifes -= 1;
-      }
-      if (this.lifes === 0) {
-        this.hasLost = true;
-      }
-      if (this.savedAnimals.length === 6) {
-        this.hasWon = true;
+    increaseTime() {
+      this.activeTime++;
+      if (this.activeTime > TIME_UNTIL_POPUP) {
+        this.showPopup = true;
       }
     },
     startGame() {
-      setInterval(this.reduceTime, 1000);
-      setTimeout(() => {
-        this.firstIteration = false;
-      }, 1000);
-      document.querySelectorAll(".emoji").forEach((element) => {
-        this.animateDiv(element);
-      });
-    },
-    resetAndStart() {
-      this.firstIteration = true;
-      this.savedAnimals = [];
-      this.lifes = 2;
-      this.hasLost = false;
-      this.hasWon = false;
-      this.time = 60;
-      this.price = "";
-      this.tabKey += 1;
-      animalIds.forEach((id) => {
-        document.getElementById(id).style.display = "block";
-      });
-      this.startGame();
+      this.countdown = 5;
+      this.gameStarted = true;
     },
     reduceTime() {
-      if (!this.hasLost && !this.hasWon) {
-        this.time -= 1;
-      }
-      if (this.time === 0) {
-        this.hasLost = true;
+      if (this.countdown > 0) {
+        this.countdown -= 1;
       }
     },
-    setPrice() {
-      if (!this.price) {
-        this.price = prices[Math.floor(Math.random() * prices.length)];
-      }
+    hideAndEndGame() {
+      this.showPopup = false;
+      this.popupDismissed = true;
+      this.gameStarted = false;
+      this.userEnteredText = "";
+    },
+    handleUserEnteredText() {
+      window.addEventListener("keydown", (e) => {
+        this.userEnteredText += e.key;
+        if (this.userEnteredText.includes(START_GAME_TEXT)) {
+          this.showPopup = true;
+          this.popupDismissed = false;
+          // this.gameStarted = true;
+        }
+      });
     },
   },
   mounted() {
-    this.startGame();
+    this.startTimer();
+    this.handleUserEnteredText();
+    setInterval(this.reduceTime, 1000);
   },
 });
 </script>
 
 <style scoped>
-.wrapper {
-  overflow-x: hidden;
-  overflow-y: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
+.funOverlay {
+  position: fixed;
   width: 100%;
   height: 100%;
-}
-.emoji {
-  cursor: pointer;
-  z-index: 2;
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.popup {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
   top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 3;
-}
-.overlay {
-  position: absolute;
   left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  opacity: 0.5;
+  pointer-events: none;
 }
-.popupContent {
-  width: 80%;
-  max-height: 90%;
-  padding: 20px;
-  background-color: #fff;
+.bottomPopup {
   border-radius: 4px;
-  z-index: 4;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.wonContainer {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.wonTitle {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 10px;
-}
-.price {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
+  padding: 10px;
+  bottom: 20px;
+  position: absolute;
+  background-color: #e4e7ed;
+  box-shadow: 1px 0px 8px 1px rgba(0, 0, 0, 0.07);
+  z-index: 12;
+  font-size: 12px;
 }
 
 @media (max-width: 800px) {
-  .price {
-    flex-direction: column;
+  .bottomPopupPosition {
+    left: 20px;
   }
 }
-.bottomButtonBar {
-  padding-top: 10px;
-  display: flex;
-  width: 230px;
-  justify-content: space-between;
+
+@media (min-width: 800px) {
+  .bottomPopupPosition {
+    right: 20px;
+  }
 }
+
+.yesNoButton {
+  margin-top: 10px;
+  width: 30px;
+}
+
 .button {
-  padding: 10px;
+  pointer-events: auto;
+  padding: 5px;
   background-color: #abab;
   border-radius: 4px;
-  margin-top: 10px;
 }
 .button:hover {
   background-color: rgba(117, 128, 117, 0.673);
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.game {
+  pointer-events: auto;
 }
 </style>

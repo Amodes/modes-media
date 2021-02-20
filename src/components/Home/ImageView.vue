@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :style="{ overflowY: `hidden` }">
+  <div class="wrapper">
     <div class="container">
       <div v-for="(shownImages, index) in shownImagesBlocks" :key="index">
         <div v-show="checkIfBlockLoaded(index)">

@@ -2,6 +2,7 @@
 body {
     font-family: 'Karla', san-serif;
     background-color: #FFFFFF;
+    overflow-x: hidden;
 }
 
 a {
