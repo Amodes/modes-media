@@ -1,9 +1,11 @@
 <template :key="tabKey">
+  <div id="happyCat" >😻</div>
+  <div id="happyPoo"> 💩 </div>
   <div class="wrapper" v-for="(element, key) in emojis" :key="key">
     <div @click="handleClick(element)" class="emoji" :id="element.id">
       {{ element.emoji }}
     </div>
-    <div class="savedWrapper">
+    <div class="gameData">
       <div>Time {{ time }}</div>
       <div>Lifes {{ lifes }} / 2</div>
       Saved Animals {{ savedAnimals.length }} / 6
@@ -62,6 +64,10 @@ interface GameData {
 const prices = [
   "https://giphy.com/embed/WU8nnAdxZWeM8",
   "https://giphy.com/embed/myuLckXB7OjfGw1gSb",
+  "https://giphy.com/embed/RyqiL8NJMUzvi",
+  "https://giphy.com/embed/401riYDwVhHluIByQH",
+  "https://giphy.com/embed/cYejmY7tuJ4HTmBYHP",
+
 ];
 const emojis = [
   { emoji: "🐒", id: "monkey" },
@@ -72,12 +78,12 @@ const emojis = [
   { emoji: "🐥", id: "chicken" },
   { emoji: "☠️", id: "skull" },
   { emoji: "🤯", id: "head" },
-  { emoji: "💩", id: "afd" },
+  { emoji: "💩", id: "Donald Trump" },
   { emoji: "🗡️", id: "sword" },
   { emoji: "🔫", id: "gun" },
   { emoji: "🔪", id: "knife" },
   { emoji: "🧨", id: "dynamite" },
-  { emoji: "🚽", id: "toilet" },
+  { emoji: "🚽", id: "Afd" },
   { emoji: "💣", id: "bomb" },
   { emoji: "💥", id: "explosion" },
   { emoji: "🔥", id: "fire" },
@@ -85,6 +91,13 @@ const emojis = [
   { emoji: "⚡", id: "lightning" },
 ];
 const animalIds = ["monkey", "gorilla", "penguin", "fox", "lama", "chicken"];
+// The higher this number the easier the game gets
+const DIFFICULTY = 0.1;
+
+const randomIntFromInterval = (min: number, max: number): number => {
+  const random = Math.floor(Math.random() * (max - min + 1) + min);
+  return random;
+};
 
 export default defineComponent({
   name: "Game",
@@ -111,7 +124,9 @@ export default defineComponent({
       return [nh, nw];
     },
 
-    moveEmojis(element) {
+    transformEmojis(element) {
+      element.style.fontSize = `${randomIntFromInterval(10, 40)}px`;
+
       const newq = this.makeNewPosition();
       const top = element.offsetTop;
       const left = element.offsetLeft;
@@ -149,7 +164,7 @@ export default defineComponent({
         element.style.left = `${newq[0]}px`;
         element.style.top = `${newq[1]}px`;
         if (!this.hasLost && !this.hasWon) {
-          this.moveEmojis(element);
+          this.transformEmojis(element);
         }
       }, speed - 10);
     },
@@ -157,38 +172,53 @@ export default defineComponent({
       const x = Math.abs(prev[1] - next[1]);
       const y = Math.abs(prev[0] - next[0]);
       const greatest = x > y ? x : y;
-      const speedModifier = 0.3;
+      const speedModifier = DIFFICULTY;
       const speed = Math.ceil(greatest / speedModifier);
       return speed;
     },
-    handleClick(element: any) {
+    handleClick(emojiData: any) {
       if (this.hasWon || this.hasLost) {
         return;
       }
-      if (animalIds.includes(element.id)) {
+      const element = document.getElementById(`${emojiData.id}`);
+      const animalClicked = animalIds.includes(emojiData.id);
+      if (this.savedAnimals.includes(emojiData.emoji)) {
+        return;
+      }
+      const happyCat = document.getElementById("happyCat");
+      const happyPoo = document.getElementById("happyPoo");
+
+      if (animalClicked) { happyCat.style.fontSize = "400px"; } else {
+        happyPoo.style.fontSize = "400px";
+      }
+
+      setTimeout(() => {
+        if (animalClicked) {
+          // eslint-disable-next-line no-alert
+          alert(`${emojiData.id} saved`);
+          element.style.display = "none";
+          this.savedAnimals.push(emojiData.emoji);
+          happyCat.style.fontSize = "0px";
+        } else {
         // eslint-disable-next-line no-alert
-        alert(`${element.id} saved`);
-        document.getElementById(`${element.id}`).style.display = "none";
-        this.savedAnimals.push(element.emoji);
-      } else {
-        // eslint-disable-next-line no-alert
-        alert(`You touched the dangerous ${element.id}. You lost one life.`);
-        this.lifes -= 1;
-      }
-      if (this.lifes === 0) {
-        this.hasLost = true;
-      }
-      if (this.savedAnimals.length === 6) {
-        this.hasWon = true;
-      }
+          alert(`You touched the dangerous ${emojiData.id}. You lost one life.`);
+          this.lifes -= 1;
+          happyPoo.style.fontSize = "0px";
+        }
+        if (this.lifes === 0) {
+          this.hasLost = true;
+        }
+        if (this.savedAnimals.length === 6) {
+          this.hasWon = true;
+        }
+      }, 400);
     },
     startGame() {
-      setInterval(this.reduceTime, 1000);
       setTimeout(() => {
         this.firstIteration = false;
       }, 1000);
       document.querySelectorAll(".emoji").forEach((element) => {
-        this.moveEmojis(element);
+        this.transformEmojis(element);
       });
     },
     resetAndStart() {
@@ -224,6 +254,7 @@ export default defineComponent({
   },
   mounted() {
     document.querySelector("body").style.overflowY = "hidden";
+    setInterval(this.reduceTime, 1000);
     this.startGame();
   },
   beforeUnmount() {
@@ -235,7 +266,7 @@ export default defineComponent({
 <style scoped>
 .wrapper {
   overflow-x: hidden;
-   overflow-y: hidden;
+  overflow-y: hidden;
   position: absolute;
   top: 0;
   left: 0;
@@ -243,6 +274,14 @@ export default defineComponent({
   height: 100%;
   padding: 5px;
   box-sizing: border-box;
+}
+.gameData {
+  background-color: #fff;
+  opacity:0.1;
+  font-size: 12px;
+  border-radius: 4px;
+  padding: 5px;
+  width: 160px;
 }
 .emoji {
   cursor: pointer;
@@ -256,6 +295,8 @@ export default defineComponent({
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+       transition:font-size 0.2s;
+
 }
 .popup {
   width: 100%;
@@ -324,5 +365,13 @@ export default defineComponent({
 }
 .button:hover {
   background-color: rgba(117, 128, 117, 0.673);
+}
+#happyCat, #happyPoo {
+  position: absolute;
+  left: calc(50% - 250px);
+  z-index: 20;
+  font-size: 0px;
+     transition:font-size 0.4s;
+
 }
 </style>

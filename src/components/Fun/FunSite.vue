@@ -17,7 +17,7 @@
       </div>
     </div>
     <div v-if="gameStarted" class="game">
-      <div v-if="countdown > 0">
+      <div class="countdown" v-if="countdown > 0">
        Find and click on the animals to save them!
        Game starts in {{countdown}}
        </div>
@@ -152,5 +152,10 @@ export default defineComponent({
 }
 .game {
   pointer-events: auto;
+}
+.countdown {
+  background-color: #000;
+  color:white;
+  padding: 5px;
 }
 </style>
