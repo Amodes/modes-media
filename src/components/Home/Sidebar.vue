@@ -46,8 +46,14 @@ export default defineComponent({
 }
 
 .item {
+  height: 20px;
   cursor: pointer;
   padding-bottom: 20px;
+}
+
+.item:hover {
+  font-size: 18px;
+  transition: font-size 0.2s;
 }
 
 @media (min-width: 800px) {

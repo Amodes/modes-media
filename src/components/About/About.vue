@@ -11,6 +11,8 @@
    different countries. Now there is no use for it anymore but if you like you can copy paste
    them for free from here: u
    - There is a data policy section to see which crazy things happen with ur data:
+
+   Contact me: modes402@gmail.com
 </template>
 
 <script lang="ts">

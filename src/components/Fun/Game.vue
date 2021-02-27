@@ -1,6 +1,6 @@
 <template :key="tabKey">
-  <div id="happyCat" >😻</div>
-  <div id="happyPoo"> 💩 </div>
+  <div id="happyCat">😻</div>
+  <div id="happyPoo">💩</div>
   <div class="wrapper" v-for="(element, key) in emojis" :key="key">
     <div @click="handleClick(element)" class="emoji" :id="element.id">
       {{ element.emoji }}
@@ -67,7 +67,6 @@ const prices = [
   "https://giphy.com/embed/RyqiL8NJMUzvi",
   "https://giphy.com/embed/401riYDwVhHluIByQH",
   "https://giphy.com/embed/cYejmY7tuJ4HTmBYHP",
-
 ];
 const emojis = [
   { emoji: "🐒", id: "monkey" },
@@ -182,26 +181,31 @@ export default defineComponent({
       }
       const element = document.getElementById(`${emojiData.id}`);
       const animalClicked = animalIds.includes(emojiData.id);
-      if (this.savedAnimals.includes(emojiData.emoji)) {
-        return;
-      }
+
       const happyCat = document.getElementById("happyCat");
       const happyPoo = document.getElementById("happyPoo");
 
-      if (animalClicked) { happyCat.style.fontSize = "400px"; } else {
+      if (animalClicked) {
+        happyCat.style.fontSize = "400px";
+      } else {
         happyPoo.style.fontSize = "400px";
       }
 
       setTimeout(() => {
         if (animalClicked) {
+          if (this.savedAnimals.includes(emojiData.emoji)) {
+            return;
+          }
           // eslint-disable-next-line no-alert
           alert(`${emojiData.id} saved`);
           element.style.display = "none";
           this.savedAnimals.push(emojiData.emoji);
           happyCat.style.fontSize = "0px";
         } else {
-        // eslint-disable-next-line no-alert
-          alert(`You touched the dangerous ${emojiData.id}. You lost one life.`);
+          // eslint-disable-next-line no-alert
+          alert(
+            `You touched the dangerous ${emojiData.id}. You lost one life.`,
+          );
           this.lifes -= 1;
           happyPoo.style.fontSize = "0px";
         }
@@ -277,7 +281,7 @@ export default defineComponent({
 }
 .gameData {
   background-color: #fff;
-  opacity:0.1;
+  opacity: 0.1;
   font-size: 12px;
   border-radius: 4px;
   padding: 5px;
@@ -295,8 +299,7 @@ export default defineComponent({
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-       transition:font-size 0.2s;
-
+  transition: font-size 0.2s;
 }
 .popup {
   width: 100%;
@@ -366,12 +369,12 @@ export default defineComponent({
 .button:hover {
   background-color: rgba(117, 128, 117, 0.673);
 }
-#happyCat, #happyPoo {
+#happyCat,
+#happyPoo {
   position: absolute;
   left: calc(50% - 250px);
   z-index: 20;
   font-size: 0px;
-     transition:font-size 0.4s;
-
+  transition: font-size 0.4s;
 }
 </style>

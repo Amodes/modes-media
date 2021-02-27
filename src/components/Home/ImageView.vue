@@ -5,7 +5,10 @@
     @click="showImageInPopup(null)"
   >
     <div class="imageOverlay" />
-    <img class="popupImage" :src="require('../../content/photography/' + currentOpenedImage)" />
+    <img
+      class="popupImage"
+      :src="require('../../content/photography/' + currentOpenedImage)"
+    />
   </div>
   <div class="wrapper">
     <div class="container">
@@ -27,7 +30,7 @@
       class="openCategories"
       @click="toggleOpenCategories"
     >
-      🗺️
+      <img class="locationIcon" src="../../assets/icons/location.svg" />
     </button>
     <div
       v-if="!isMobile || mobileCategoriesOpen"
@@ -192,7 +195,9 @@ export default defineComponent({
       this.isMobile = window.innerWidth < 800;
     },
     showImageInPopup(path: string) {
-      if (this.isMobile) { return; }
+      if (this.isMobile) {
+        return;
+      }
       this.currentOpenedImage = path;
       if (path) {
         document.querySelector("body").style.overflowY = "hidden";
@@ -296,6 +301,10 @@ export default defineComponent({
   bottom: 20px;
   font-size: 40px;
   z-index: 2;
+}
+
+.locationIcon {
+  width: 50px;
 }
 
 /* loader */

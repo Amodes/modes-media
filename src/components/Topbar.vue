@@ -7,38 +7,35 @@
     </div>
     <div class="socialMedia">
       <div class="row">
-        <div class="icon">
-          <a target="_blank" href="https://github.com/amodes">
-            <img src="../assets/icons/github.svg"
-          /></a>
-        </div>
+        <a class="icon github" target="_blank" href="https://github.com/amodes">
+          <img src="../assets/icons/github.svg"
+        /></a>
 
-        <div class="icon">
-          <a
-            target="_blank"
-            href="https://de.linkedin.com/in/alexander-modes-499215129"
-          >
-            <img src="../assets/icons/linkedin.svg" />
-          </a>
-        </div>
+        <a
+          class="icon linkedin"
+          target="_blank"
+          href="https://de.linkedin.com/in/alexander-modes-499215129"
+        >
+          <img src="../assets/icons/linkedin.svg" />
+        </a>
       </div>
       <div class="row">
-        <div class="icon">
-          <a target="_blank" href="https://medium.com/@amodes">
-            <img src="../assets/icons/medium.svg" />
-          </a>
-        </div>
-        <div class="icon">
-          <a target="_blank" href="https://www.instagram.com/_amodes_/">
-            <img src="../assets/icons/instagram.svg" />
-          </a>
-        </div>
-      </div>
-      <!-- <div class="icon">
-        <a href="mailto:modes402@gmail.com">
-          <img src="../assets/icons/mail.svg" />
+        <a
+          class="icon medium"
+          target="_blank"
+          href="https://medium.com/@amodes"
+        >
+          <img src="../assets/icons/medium.svg" />
         </a>
-      </div> -->
+
+        <a
+          class="icon instagram"
+          target="_blank"
+          href="https://www.instagram.com/_amodes_/"
+        >
+          <img src="../assets/icons/instagram.svg" />
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -67,7 +64,7 @@ export default defineComponent({
   }
 }
 .name {
-  width: 100px;
+  width: 60px;
   font-family: "Playfair Display", serif;
   font-size: 18px;
   font-weight: 500;
@@ -86,6 +83,25 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
 }
+.github,
+.linkedin,
+.medium,
+.instagram {
+  transition: background-color 0.6s;
+}
+.github:hover {
+  background-color: #e0e0e0;
+}
+.linkedin:hover {
+  background-color: #8488d9;
+}
+.medium:hover {
+  background-color: #8cdb8c;
+}
+.instagram:hover {
+  background-color: #dca2eb;
+}
+
 img {
   display: block;
   height: 15px;
@@ -110,6 +126,11 @@ img {
     justify-content: space-around;
     display: flex;
   }
+}
+
+.linkItem:hover {
+  font-size: 18px;
+  transition: font-size 0.2s;
 }
 
 @media (max-width: 800px) {
