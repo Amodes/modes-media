@@ -1,4 +1,12 @@
 <template>
+  <div
+    v-if="currentOpenedImage"
+    class="imagePopup"
+    @click="showImageInPopup(null)"
+  >
+    <div class="imageOverlay" />
+    <img class="popupImage" :src="require('../../content/photography/' + currentOpenedImage)" />
+  </div>
   <div class="wrapper">
     <div class="container">
       <div v-for="(shownImages, index) in shownImagesBlocks" :key="index">
@@ -9,6 +17,7 @@
             :key="index"
             :src="require('../../content/photography/' + path)"
             @load="onImageLoad"
+            @click="showImageInPopup(path)"
           />
         </div>
       </div>
@@ -25,7 +34,7 @@
       class="sidebarWrapper"
       :style="{ top: `${scrollYPosition}px` }"
     >
-      <div class="overlay" />
+      <div class="overlay" @click="closeMobileCategory()" />
       <div class="sidebarContainer">
         <Sidebar
           :activeCategory="'random'"
@@ -62,6 +71,7 @@ interface ImageViewData {
   isMobile: boolean;
   mobileCategoriesOpen: boolean;
   scrollYPosition: number;
+  currentOpenedImage: string;
 }
 
 const numberImageBlock = 10;
@@ -79,6 +89,7 @@ export default defineComponent({
       isMobile: window.innerWidth < 800,
       mobileCategoriesOpen: false,
       scrollYPosition: 0,
+      currentOpenedImage: null,
     };
   },
   components: { Sidebar },
@@ -118,6 +129,9 @@ export default defineComponent({
       } else {
         document.querySelector("body").style.overflowY = "auto";
       }
+    },
+    closeMobileCategory() {
+      this.mobileCategoriesOpen = false;
     },
     onImageLoad() {
       this.numberImagesLoaded++;
@@ -177,6 +191,15 @@ export default defineComponent({
     onResize() {
       this.isMobile = window.innerWidth < 800;
     },
+    showImageInPopup(path: string) {
+      if (this.isMobile) { return; }
+      this.currentOpenedImage = path;
+      if (path) {
+        document.querySelector("body").style.overflowY = "hidden";
+      } else {
+        document.querySelector("body").style.overflowY = "auto";
+      }
+    },
   },
   mounted() {
     window.addEventListener("resize", this.onResize);
@@ -193,6 +216,34 @@ export default defineComponent({
 .wrapper {
   display: flex;
 }
+
+.imagePopup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+.imageOverlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.8;
+}
+.popupImage {
+  padding: 20px;
+  z-index: 5;
+  max-width: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+}
 .container {
   width: 100%;
   justify-content: center;
@@ -206,6 +257,7 @@ export default defineComponent({
 
 .image {
   max-width: 100%;
+  cursor: pointer;
 }
 .sidebarWrapper {
   width: 20%;
