@@ -1,40 +1,56 @@
 <template>
   <div class="topBarContainer">
     <div class="name">Alexander Modes</div>
-    <div class="linkContainer">
-      <router-link class="linkItem" to="/">Photography</router-link>
-      <router-link class="linkItem" to="/about">About</router-link>
-    </div>
-    <div class="socialMedia">
-      <div class="row">
-        <a class="icon github" target="_blank" href="https://github.com/amodes">
-          <img src="../assets/icons/github.svg"
-        /></a>
-
-        <a
-          class="icon linkedin"
-          target="_blank"
-          href="https://de.linkedin.com/in/alexander-modes-499215129"
+    <div class="rightSide">
+      <div class="linkContainer">
+        <div
+          class="linkItem"
+          v-bind:class="{ linkItem: true, active: activePage === '/' }"
+          @click="handleMenuClick('/')"
         >
-          <img src="../assets/icons/linkedin.svg" />
-        </a>
+          Photography
+        </div>
+        <div
+          v-bind:class="{ linkItem: true, active: activePage === '/about' }"
+          @click="handleMenuClick('/about')"
+        >
+          About
+        </div>
       </div>
-      <div class="row">
-        <a
-          class="icon medium"
-          target="_blank"
-          href="https://medium.com/@amodes"
-        >
-          <img src="../assets/icons/medium.svg" />
-        </a>
+      <div class="socialMedia">
+        <div class="row">
+          <a
+            class="icon github"
+            target="_blank"
+            href="https://github.com/amodes"
+          >
+            <img src="../assets/icons/github.svg"
+          /></a>
+          <a
+            class="icon linkedin"
+            target="_blank"
+            href="https://de.linkedin.com/in/alexander-modes-499215129"
+          >
+            <img src="../assets/icons/linkedin.svg" />
+          </a>
+        </div>
+        <div class="row">
+          <a
+            class="icon medium"
+            target="_blank"
+            href="https://medium.com/@amodes"
+          >
+            <img src="../assets/icons/medium.svg" />
+          </a>
 
-        <a
-          class="icon instagram"
-          target="_blank"
-          href="https://www.instagram.com/_amodes_/"
-        >
-          <img src="../assets/icons/instagram.svg" />
-        </a>
+          <a
+            class="icon instagram"
+            target="_blank"
+            href="https://www.instagram.com/_amodes_/"
+          >
+            <img src="../assets/icons/instagram.svg" />
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -45,6 +61,15 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Topbar",
+  data() {
+    return { activePage: window.location.pathname };
+  },
+  methods: {
+    handleMenuClick(item: string) {
+      this.activePage = item;
+      this.$router.push(item);
+    },
+  },
 });
 </script>
 
@@ -69,6 +94,16 @@ export default defineComponent({
   font-size: 18px;
   font-weight: 500;
   border-radius: 2px;
+}
+
+.rightSide {
+  display: flex;
+}
+@media (max-width: 800px) {
+  .rightSide {
+    width: 50%;
+    justify-content: space-between;
+  }
 }
 
 .socialMedia {
@@ -121,16 +156,26 @@ img {
 
 @media (min-width: 800px) {
   .linkContainer {
-    width: 30%;
     flex-direction: row;
     justify-content: space-around;
     display: flex;
+    padding-right: 50px;
   }
 }
 
+.linkItem {
+  cursor: pointer;
+  padding-bottom: 2px;
+}
 .linkItem:hover {
   font-size: 18px;
-  transition: font-size 0.2s;
+  transition: font-size 0.8s;
+}
+
+@media (min-width: 800px) {
+  .linkItem {
+    margin-right: 25px;
+  }
 }
 
 @media (max-width: 800px) {
@@ -138,4 +183,9 @@ img {
     padding-bottom: 10px;
   }
 }
+
+.active {
+  border-bottom: 1.8px solid #000;
+}
+
 </style>

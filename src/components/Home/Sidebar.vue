@@ -1,7 +1,9 @@
 <template>
   <ul class="container">
     <li class="item shuffle" @click="onClickCategory('random')">
-      <img class="icon" src="../../assets/icons/shuffle.svg" />Shuffle
+      <img class="icon" src="../../assets/icons/shuffle.svg" />
+      Shuffle
+      <span class="circle" v-if="activeItem === 'random'"> ● </span>
     </li>
     <li
       v-for="(item, key) in navigationItems"
@@ -9,7 +11,8 @@
       @click="onClickCategory(key)"
       class="item"
     >
-      {{ item.title }}
+      {{item.title}}
+      <span class="circle" v-if="activeItem === key"> ● </span>
     </li>
   </ul>
 </template>
@@ -22,11 +25,13 @@ export default defineComponent({
   name: "Sidebar",
   data: () => ({
     navigationItems: imageContent,
+    activeItem: "random",
   }),
   props: { activeCategory: String, handleItemClick: Function },
   methods: {
     onClickCategory(item: string) {
-      if (this.handleItemClick) this.handleItemClick(item);
+      this.handleItemClick(item);
+      this.activeItem = item;
     },
   },
 });
@@ -37,7 +42,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 0 10px 0;
+  padding: 10px 0 20px 0;
 }
 @media (min-width: 800px) {
   .container {
@@ -48,7 +53,11 @@ export default defineComponent({
 .item {
   height: 20px;
   cursor: pointer;
-  padding-bottom: 20px;
+  padding: 20px 0 0 0;
+}
+
+.activeItem {
+  border-bottom: 1.8px solid #000;
 }
 
 .item:hover {
@@ -57,10 +66,10 @@ export default defineComponent({
 }
 
 @media (min-width: 800px) {
- .item {
-  cursor: pointer;
-  padding-bottom: 10px;
-}
+  .item {
+    cursor: pointer;
+    padding: 10px 0 0 0;
+  }
 }
 
 .shuffle {
@@ -71,5 +80,9 @@ export default defineComponent({
   padding-right: 5px;
   width: 20px;
   height: 20px;
+}
+
+.circle {
+  margin-left: 3px;
 }
 </style>

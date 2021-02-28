@@ -107,6 +107,7 @@ export default defineComponent({
   top: 0;
   left: 0;
   pointer-events: none;
+  color: #000;
 }
 .bottomPopup {
   border-radius: 4px;
