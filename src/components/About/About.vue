@@ -30,7 +30,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-const imageClickAmount = 10;
+const imageClickAmount = 100;
 
 interface AboutData {
  clickCount: 0;
@@ -45,7 +45,6 @@ export default defineComponent({
   methods: {
     handleImageClick() {
       this.clickCount += 1;
-      console.log(this.clickCount, imageClickAmount);
       if (this.clickCount === imageClickAmount) {
         alert("Your clicks are not fast enough. You have to click faster. Try again!");
       }

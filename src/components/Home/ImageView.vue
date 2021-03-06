@@ -99,7 +99,7 @@ export default defineComponent({
   created() {
     if (!this.shownImagesBlocks.length) {
       this.isLoading = true;
-      const randomImages = getRandomImages(50);
+      const randomImages = getRandomImages();
       this.allImages = randomImages;
       this.shownImagesBlocks.push(randomImages.slice(0, numberImageBlock));
     }
@@ -112,7 +112,7 @@ export default defineComponent({
       this.numberImagesLoaded = 0;
 
       if (clickedCategory === "random") {
-        const randomImages = getRandomImages(50);
+        const randomImages = getRandomImages();
         this.allImages = randomImages;
         this.shownImagesBlocks = [randomImages.slice(0, numberImageBlock)];
       } else {

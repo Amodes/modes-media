@@ -7,12 +7,11 @@ export const shuffle = (array: string[], maxElements?: number): void => {
   }
 };
 
-export const getRandomImages = (maxElements: number): string [] => {
+export const getRandomImages = (maxElements?: number): string [] => {
   const allImageData: string[] = [];
   Object.keys(imageContent).forEach((categoryData) => {
     allImageData.push(...imageContent[categoryData as keyof typeof imageContent].paths);
   });
-
   shuffle(allImageData, maxElements);
   return allImageData;
 };
