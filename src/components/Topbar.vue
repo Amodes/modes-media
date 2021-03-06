@@ -1,6 +1,6 @@
 <template>
   <div class="topBarContainer">
-    <div class="name">Alexander Modes</div>
+    <div class="name"   @click="handleMenuClick('/')">Alexander Modes</div>
     <div class="rightSide">
       <div class="linkContainer">
         <div
@@ -89,6 +89,7 @@ export default defineComponent({
   }
 }
 .name {
+  cursor: pointer;
   width: 60px;
   font-family: "Playfair Display", serif;
   font-size: 18px;
@@ -167,10 +168,6 @@ img {
   cursor: pointer;
   padding-bottom: 2px;
 }
-.linkItem:hover {
-  font-size: 18px;
-  transition: font-size 0.8s;
-}
 
 @media (min-width: 800px) {
   .linkItem {
@@ -184,8 +181,10 @@ img {
   }
 }
 
+@media (min-width: 800px) {
 .active {
   border-bottom: 1.8px solid #000;
+}
 }
 
 </style>

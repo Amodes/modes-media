@@ -53,6 +53,7 @@ import { defineComponent } from "vue";
 interface GameData {
   firstIteration: boolean;
   emojis: any;
+    clickedBadThings: [];
   savedAnimals: [];
   lifes: number;
   hasLost: boolean;
@@ -104,6 +105,7 @@ export default defineComponent({
     return {
       emojis,
       firstIteration: true,
+      clickedBadThings: [],
       savedAnimals: [],
       lifes: 2,
       hasLost: false,
@@ -179,17 +181,11 @@ export default defineComponent({
       if (this.hasWon || this.hasLost) {
         return;
       }
-      const element = document.getElementById(`${emojiData.id}`);
       const animalClicked = animalIds.includes(emojiData.id);
 
-      const happyCat = document.getElementById("happyCat");
-      const happyPoo = document.getElementById("happyPoo");
+      const clickedEmoji = document.getElementById(emojiData.id);
 
-      if (animalClicked) {
-        happyCat.style.fontSize = "400px";
-      } else {
-        happyPoo.style.fontSize = "400px";
-      }
+      clickedEmoji.style.fontSize = "100px";
 
       setTimeout(() => {
         if (animalClicked) {
@@ -198,17 +194,21 @@ export default defineComponent({
           }
           // eslint-disable-next-line no-alert
           alert(`${emojiData.id} saved`);
-          element.style.display = "none";
           this.savedAnimals.push(emojiData.emoji);
-          happyCat.style.fontSize = "0px";
+          clickedEmoji.style.display = "none";
         } else {
+          if (this.clickedBadThings.includes(emojiData.emoji)) {
+            return;
+          }
           // eslint-disable-next-line no-alert
           alert(
             `You touched the dangerous ${emojiData.id}. You lost one life.`,
           );
+          clickedEmoji.style.fontSize = "20px";
+          this.clickedBadThings.push(emojiData.emoji);
           this.lifes -= 1;
-          happyPoo.style.fontSize = "0px";
         }
+
         if (this.lifes === 0) {
           this.hasLost = true;
         }
@@ -228,6 +228,8 @@ export default defineComponent({
     resetAndStart() {
       this.firstIteration = true;
       this.savedAnimals = [];
+      this.clickedBadThings = [];
+
       this.lifes = 2;
       this.hasLost = false;
       this.hasWon = false;
