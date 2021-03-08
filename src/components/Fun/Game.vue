@@ -1,11 +1,9 @@
 <template :key="tabKey">
-  <div id="happyCat">😻</div>
-  <div id="happyPoo">💩</div>
   <div class="wrapper" v-for="(element, key) in emojis" :key="key">
     <div @click="handleClick(element)" class="emoji" :id="element.id">
       {{ element.emoji }}
     </div>
-    <div class="gameData">
+    <div class="game-data-section">
       <div>Time {{ time }}</div>
       <div>Lifes {{ lifes }} / 2</div>
       Saved Animals {{ savedAnimals.length }} / 6
@@ -14,15 +12,15 @@
   </div>
   <div v-if="hasLost || hasWon" class="popup">
     <div class="overlay" />
-    <div class="popupContent">
+    <div class="popup-content">
       <div v-if="hasLost">😿😿😿 You couldn't save all animals.</div>
-      <div class="wonContainer" v-else>
-        <div class="wonTitle">😸😸😸 You saved all animals!</div>
+      <div class="won-container" v-else>
+        <div class="won-title">😸😸😸 You saved all animals!</div>
         <button v-if="!price" class="button" @click="setPrice()">
           🎁 Get your price
         </button>
         <div class="price" v-if="price">
-          <div class="priceTitle">You won a giphy 🎉</div>
+          <div class="won-description">You won a giphy 🎉</div>
           <iframe
             :src="price"
             width="100%"
@@ -37,7 +35,7 @@
           </p>
         </div>
       </div>
-      <div class="bottomButtonBar">
+      <div class="bottom-button-bar">
         <button class="button restart" @click="resetAndStart()">
           ♻️ Try again
         </button>
@@ -53,7 +51,7 @@ import { defineComponent } from "vue";
 interface GameData {
   firstIteration: boolean;
   emojis: any;
-    clickedBadThings: [];
+  clickedBadThings: [];
   savedAnimals: [];
   lifes: number;
   hasLost: boolean;
@@ -281,7 +279,8 @@ export default defineComponent({
   padding: 5px;
   box-sizing: border-box;
 }
-.gameData {
+
+.game-data-section {
   background-color: #fff;
   opacity: 0.1;
   font-size: 12px;
@@ -289,6 +288,7 @@ export default defineComponent({
   padding: 5px;
   width: 160px;
 }
+
 .emoji {
   cursor: pointer;
   z-index: 2;
@@ -303,6 +303,7 @@ export default defineComponent({
   user-select: none;
   transition: font-size 0.2s;
 }
+
 .popup {
   width: 100%;
   height: 100%;
@@ -314,6 +315,7 @@ export default defineComponent({
   align-items: center;
   z-index: 3;
 }
+
 .overlay {
   position: absolute;
   left: 0;
@@ -323,7 +325,8 @@ export default defineComponent({
   background-color: #000;
   opacity: 0.5;
 }
-.popupContent {
+
+.popup-content {
   width: 80%;
   max-height: 90%;
   padding: 20px;
@@ -335,16 +338,25 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
 }
-.wonContainer {
+
+.won-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.wonTitle {
+
+.wont-title {
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
 }
+
+@media (max-width: 800px) {
+  .won-description {
+    padding-bottom: 5px;
+  }
+}
+
 .price {
   display: flex;
   align-items: center;
@@ -356,27 +368,22 @@ export default defineComponent({
     flex-direction: column;
   }
 }
-.bottomButtonBar {
+
+.bottom-button-bar {
   padding-top: 10px;
   display: flex;
   width: 230px;
   justify-content: space-between;
 }
+
 .button {
   padding: 10px;
   background-color: #abab;
   border-radius: 4px;
   margin-top: 10px;
 }
+
 .button:hover {
   background-color: rgba(117, 128, 117, 0.673);
-}
-#happyCat,
-#happyPoo {
-  position: absolute;
-  left: calc(50% - 250px);
-  z-index: 20;
-  font-size: 0px;
-  transition: font-size 0.4s;
 }
 </style>

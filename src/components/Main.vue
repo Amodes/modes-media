@@ -1,9 +1,9 @@
 <template>
- <div>
+  <div>
     <Topbar />
   </div>
   <Fun />
-  <div class="contentArea">
+  <div class="content-area">
     <router-view />
   </div>
 </template>
@@ -20,8 +20,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.contentAre {
+.content-area {
   width: 100%;
 }
-
 </style>

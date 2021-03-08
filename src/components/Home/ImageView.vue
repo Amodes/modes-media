@@ -1,12 +1,12 @@
 <template>
   <div
     v-if="currentOpenedImage"
-    class="imagePopup"
+    class="clicked-image-popup"
     @click="showImageInPopup(null)"
   >
-    <div class="imageOverlay" />
+    <div class="clicked-image-overlay" />
     <img
-      class="popupImage"
+      class="popup-image"
       :src="require('../../content/photography/' + currentOpenedImage)"
     />
   </div>
@@ -27,18 +27,18 @@
     </div>
     <button
       v-if="isMobile"
-      class="openCategories"
+      class="opened-categories"
       @click="toggleOpenCategories"
     >
-      <img class="locationIcon" src="../../assets/icons/location.svg" />
+      <img class="location-icon" src="../../assets/icons/location.svg" />
     </button>
     <div
       v-if="!isMobile || mobileCategoriesOpen"
-      class="sidebarWrapper"
+      class="sidebar-wrapper"
       :style="{ top: `${scrollYPosition}px` }"
     >
       <div class="overlay" @click="closeMobileCategory()" />
-      <div class="sidebarContainer">
+      <div class="sidebar-container">
         <Sidebar
           :activeCategory="'random'"
           :handleItemClick="handleItemClick"
@@ -46,7 +46,7 @@
       </div>
     </div>
   </div>
-  <div class="loaderContainer">
+  <div class="loader-container">
     <div class="loader" v-if="!maxImagesReached" @click="showMore()">
       <div />
       <div />
@@ -54,7 +54,7 @@
       <div />
     </div>
   </div>
-  <div class="loadMoreIdentifier" />
+  <div class="load-more-identifier" />
 </template>
 
 <script lang="ts">
@@ -163,7 +163,7 @@ export default defineComponent({
       // needed for position of categories overlay on mobile
       this.scrollYPosition = window.scrollY;
       // needed for load more logic
-      const scrolledTo = document.querySelector(".loadMoreIdentifier");
+      const scrolledTo = document.querySelector(".load-more-identifier");
       if (
         scrolledTo
         && this.hasScrolledIntoElement(scrolledTo)
@@ -222,7 +222,7 @@ export default defineComponent({
   display: flex;
 }
 
-.imagePopup {
+.clicked-image-popup {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -233,7 +233,8 @@ export default defineComponent({
   align-items: center;
   z-index: 3;
 }
-.imageOverlay {
+
+.clicked-image-overlay {
   position: absolute;
   left: 0;
   top: 0;
@@ -242,17 +243,20 @@ export default defineComponent({
   background-color: #000;
   opacity: 0.8;
 }
-.popupImage {
+
+.popup-image {
   padding: 20px;
   z-index: 5;
   max-width: 100%;
   max-height: 100%;
   box-sizing: border-box;
 }
+
 .container {
   width: 100%;
   justify-content: center;
 }
+
 @media (min-width: 800px) {
   .container {
     padding-left: 20%;
@@ -264,11 +268,13 @@ export default defineComponent({
   max-width: 100%;
   cursor: pointer;
 }
-.sidebarWrapper {
+
+.sidebar-wrapper {
   width: 20%;
 }
+
 @media (max-width: 800px) {
-  .sidebarWrapper {
+  .sidebar-wrapper {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -282,7 +288,7 @@ export default defineComponent({
     opacity: 0.8;
   }
 
-  .sidebarContainer {
+  .sidebar-container {
     position: absolute;
     right: 20px;
     bottom: 20px;
@@ -292,10 +298,12 @@ export default defineComponent({
     border-radius: 4px;
   }
 }
+
 .loadMoreIdentifier {
   height: 1px;
 }
-.openCategories {
+
+.opened-categories {
   position: fixed;
   right: 20px;
   bottom: 20px;
@@ -303,15 +311,16 @@ export default defineComponent({
   z-index: 2;
 }
 
-.locationIcon {
+.location-icon {
   width: 50px;
 }
 
 /* loader */
-.loaderContainer {
+.loader-container {
   display: flex;
   justify-content: center;
 }
+
 .loader {
   display: inline-block;
   position: relative;

@@ -1,13 +1,13 @@
 <template>
-  <div class="funOverlay" v-if="showPopup && !popupDismissed">
-    <div class="bottomPopup bottomPopupPosition">
+  <div class="overlay" v-if="showPopup && !popupDismissed">
+    <div class="popup-bottom-section popup-bottom-position">
       <div v-if="!gameStarted">
         Are you bored?
-        <div class="buttonContainer">
-          <button class="button yesNoButton" @click="hideAndEndGame()">
+        <div class="button-container">
+          <button class="button action-button" @click="hideAndEndGame()">
             No
           </button>
-          <button class="button yesNoButton" @click="startGame()">Yes</button>
+          <button class="button action-button" @click="startGame()">Yes</button>
         </div>
       </div>
       <div v-else>
@@ -18,9 +18,9 @@
     </div>
     <div v-if="gameStarted" class="game">
       <div class="countdown" v-if="countdown > 0">
-       Find and click on the animals to save them!
-       Game starts in {{countdown}}
-       </div>
+        Find and click on the animals to save them! Game starts in
+        {{ countdown }}
+      </div>
       <Game v-else :onClose="hideAndEndGame" />
     </div>
   </div>
@@ -100,7 +100,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.funOverlay {
+.overlay {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -109,7 +109,8 @@ export default defineComponent({
   pointer-events: none;
   color: #000;
 }
-.bottomPopup {
+
+.popup-bottom-section {
   border-radius: 4px;
   padding: 10px;
   bottom: 20px;
@@ -121,18 +122,18 @@ export default defineComponent({
 }
 
 @media (max-width: 800px) {
-  .bottomPopupPosition {
+  .popup-bottom-position {
     left: 20px;
   }
 }
 
 @media (min-width: 800px) {
-  .bottomPopupPosition {
+  .popup-bottom-position {
     right: 20px;
   }
 }
 
-.yesNoButton {
+.action-button {
   margin-top: 10px;
   width: 30px;
 }
@@ -143,20 +144,23 @@ export default defineComponent({
   background-color: #abab;
   border-radius: 4px;
 }
+
 .button:hover {
   background-color: rgba(117, 128, 117, 0.673);
 }
 
-.buttonContainer {
+.button-container {
   display: flex;
   justify-content: space-between;
 }
+
 .game {
   pointer-events: auto;
 }
+
 .countdown {
   background-color: #000;
-  color:white;
+  color: white;
   padding: 5px;
 }
 </style>

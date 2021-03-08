@@ -1,23 +1,24 @@
 <template>
-  <div class="topBarContainer">
-    <div class="name"   @click="handleMenuClick('/')">Alexander Modes</div>
-    <div class="rightSide">
-      <div class="linkContainer">
+  <div class="topbar-container">
+    <div class="name" @click="handleMenuClick('/')">Alexander Modes</div>
+    <div class="right-side-container">
+      <div class="link-container">
         <div
-          class="linkItem"
+          class="link-item"
           v-bind:class="{ linkItem: true, active: activePage === '/' }"
           @click="handleMenuClick('/')"
         >
           Photography
         </div>
         <div
+          class="link-item"
           v-bind:class="{ linkItem: true, active: activePage === '/about' }"
           @click="handleMenuClick('/about')"
         >
           About
         </div>
       </div>
-      <div class="socialMedia">
+      <div class="social-media">
         <div class="row">
           <a
             class="icon github"
@@ -74,20 +75,22 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.topBarContainer {
+.topbar-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 20px;
   box-sizing: border-box;
 }
+
 @media (min-width: 800px) {
-  .topBarContainer {
+  .topbar-container {
     padding: 20px 0 20px 20%;
     width: 80%;
     align-items: center;
   }
 }
+
 .name {
   cursor: pointer;
   width: 60px;
@@ -97,20 +100,22 @@ export default defineComponent({
   border-radius: 2px;
 }
 
-.rightSide {
+.right-side-container {
   display: flex;
 }
+
 @media (max-width: 800px) {
-  .rightSide {
+  .right-side-container {
     width: 50%;
     justify-content: space-between;
   }
 }
 
-.socialMedia {
+.social-media {
   display: flex;
   flex-direction: column;
 }
+
 .icon {
   width: 30px;
   height: 30px;
@@ -119,6 +124,7 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
 }
+
 .github,
 .linkedin,
 .medium,
@@ -148,7 +154,8 @@ img {
   display: flex;
   align-items: center;
 }
-.linkContainer {
+
+.link-container {
   flex-direction: column;
   display: flex;
   justify-content: center;
@@ -156,7 +163,7 @@ img {
 }
 
 @media (min-width: 800px) {
-  .linkContainer {
+  .link-container {
     flex-direction: row;
     justify-content: space-around;
     display: flex;
@@ -164,27 +171,26 @@ img {
   }
 }
 
-.linkItem {
+.link-item {
   cursor: pointer;
   padding-bottom: 2px;
 }
 
 @media (min-width: 800px) {
-  .linkItem {
+  .link-item {
     margin-right: 25px;
   }
 }
 
 @media (max-width: 800px) {
-  .linkItem {
+  .link-item {
     padding-bottom: 10px;
   }
 }
 
 @media (min-width: 800px) {
-.active {
-  border-bottom: 1.8px solid #000;
+  .active {
+    border-bottom: 1.8px solid #000;
+  }
 }
-}
-
 </style>

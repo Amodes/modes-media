@@ -11,7 +11,7 @@
       @click="onClickCategory(key)"
       class="item"
     >
-      {{item.title}}
+      {{ item.title }}
       <span class="circle" v-if="activeItem === key"> ● </span>
     </li>
   </ul>
@@ -43,7 +43,9 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   padding: 10px 0 20px 0;
+  font-size: 14px;
 }
+
 @media (min-width: 800px) {
   .container {
     padding: 30px 0 0 0;
@@ -54,10 +56,6 @@ export default defineComponent({
   height: 20px;
   cursor: pointer;
   padding: 20px 0 0 0;
-}
-
-.activeItem {
-  border-bottom: 1.8px solid #000;
 }
 
 .item:hover {
