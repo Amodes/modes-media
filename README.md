@@ -1,11 +1,15 @@
-# modes-media.de Vue Website Project
+# modes-media.de 
+Vue/Typescript code for my wesite [modes-media.de](https://modes-media.de)
 
 ## Project setup
 ```
 npm install
 ```
 
+This repo doesn't contain the photographs you can see on the website. If you want to try the code, you can add example images 
 
+In `src/photography-content` create a folder `photography` and add your test images to it.
+In `src/photography-content/index.ts` you can overwrite the existing images paths with the paths to the images you just added.
 
 ### Compiles and hot-reloads for development
 ```
@@ -21,6 +25,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
