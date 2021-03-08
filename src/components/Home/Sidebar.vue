@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { imageContent } from "../../content";
+import { imageContent } from "../../photography-content";
 
 export default defineComponent({
   name: "Sidebar",

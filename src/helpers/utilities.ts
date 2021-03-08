@@ -1,4 +1,4 @@
-import { imageContent } from "../content";
+import { imageContent } from "../photography-content";
 
 export const shuffle = (array: string[], maxElements?: number): void => {
   for (let i = (maxElements || (array.length - 1)); i > 0; i--) {

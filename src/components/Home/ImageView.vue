@@ -7,7 +7,7 @@
     <div class="clicked-image-overlay" />
     <img
       class="popup-image"
-      :src="require('../../content/photography/' + currentOpenedImage)"
+      :src="require('../../photography-content/photography/' + currentOpenedImage)"
     />
   </div>
   <div class="wrapper">
@@ -18,7 +18,7 @@
             class="image"
             v-for="(path, index) in shownImages"
             :key="index"
-            :src="require('../../content/photography/' + path)"
+            :src="require('../../photography-content/photography/' + path)"
             @load="onImageLoad"
             @click="showImageInPopup(path)"
           />
@@ -61,7 +61,7 @@
 import { defineComponent } from "vue";
 
 import Sidebar from "./Sidebar.vue";
-import { imageContent } from "../../content";
+import { imageContent } from "../../photography-content";
 import { getRandomImages } from "../../helpers/utilities";
 
 interface ImageViewData {
