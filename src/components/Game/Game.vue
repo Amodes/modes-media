@@ -19,21 +19,7 @@
         <button v-if="!price" class="button" @click="setPrice()">
           🎁 Get your price
         </button>
-        <div class="price" v-if="price">
-          <div class="won-description">You won a giphy 🎉</div>
-          <iframe
-            :src="price"
-            width="100%"
-            height="300px"
-            frameBorder="0"
-            class="giphy-embed"
-            style="pointer-events: none"
-            allowFullScreen
-          ></iframe>
-          <p>
-            <a href="https://giphy.com/gifs/myuLckXB7OjfGw1gSb">via GIPHY</a>
-          </p>
-        </div>
+        <Price v-if="price" :priceUrl="price" />
       </div>
       <div class="bottom-button-bar">
         <button class="button restart" @click="resetAndStart()">
@@ -50,7 +36,7 @@ import { defineComponent } from "vue";
 import {
   prices, emojis, animalIds,
 } from "./constants";
-
+import Price from "./Price.vue";
 import { generateRandomNumberFromInterval } from "../../helpers/utilities";
 import { calculateNewOffset, calculateSpeed, calculateNewPosition } from "./helpers";
 
@@ -74,6 +60,8 @@ interface GameData {
 
 export default defineComponent({
   name: "Game",
+  components: { Price },
+
   data(): GameData {
     return {
       emojis,
@@ -172,7 +160,6 @@ export default defineComponent({
       this.firstIteration = true;
       this.savedAnimals = [];
       this.clickedBadThings = [];
-
       this.lifes = 2;
       this.hasLost = false;
       this.hasWon = false;
@@ -294,24 +281,6 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
-}
-
-@media (max-width: 800px) {
-  .won-description {
-    padding-bottom: 5px;
-  }
-}
-
-.price {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-}
-
-@media (max-width: 800px) {
-  .price {
-    flex-direction: column;
-  }
 }
 
 .bottom-button-bar {

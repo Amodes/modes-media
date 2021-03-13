@@ -27,7 +27,7 @@ export default defineComponent({
     navigationItems: imageContent,
     activeItem: "random",
   }),
-  props: { activeCategory: String, handleItemClick: Function },
+  props: { handleItemClick: Function },
   methods: {
     onClickCategory(item: string) {
       this.handleItemClick(item);

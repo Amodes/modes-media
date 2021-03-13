@@ -42,7 +42,6 @@
       <div class="overlay" @click="closeMobileCategory()" />
       <div class="sidebar-container">
         <Sidebar
-          :activeCategory="'random'"
           :handleItemClick="handleItemClick"
         />
       </div>
