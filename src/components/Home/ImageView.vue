@@ -7,7 +7,9 @@
     <div class="clicked-image-overlay" />
     <img
       class="popup-image"
-      :src="require('../../photography-content/photography/' + currentOpenedImage)"
+      :src="
+        require('../../photography-content/photography/' + currentOpenedImage)
+      "
     />
   </div>
   <div class="wrapper">
@@ -47,12 +49,7 @@
     </div>
   </div>
   <div class="loader-container">
-    <div class="loader" v-if="!maxImagesReached" @click="showMore()">
-      <div />
-      <div />
-      <div />
-      <div />
-    </div>
+    <Loader />
   </div>
   <div class="load-more-identifier" />
 </template>
@@ -61,6 +58,7 @@
 import { defineComponent } from "vue";
 
 import Sidebar from "./Sidebar.vue";
+import Loader from "../common/Loader.vue";
 import { imageContent } from "../../photography-content";
 import { getRandomImages } from "../../helpers/utilities";
 
@@ -95,7 +93,7 @@ export default defineComponent({
       currentOpenedImage: null,
     };
   },
-  components: { Sidebar },
+  components: { Sidebar, Loader },
   created() {
     if (!this.shownImagesBlocks.length) {
       this.isLoading = true;
@@ -259,8 +257,8 @@ export default defineComponent({
 
 @media (min-width: 800px) {
   .container {
-    padding-left: 20%;
-    width: 60%;
+    padding-left: 22.5%;
+    width: 55%;
   }
 }
 
@@ -315,45 +313,9 @@ export default defineComponent({
   width: 50px;
 }
 
-/* loader */
 .loader-container {
   display: flex;
   justify-content: center;
 }
 
-.loader {
-  display: inline-block;
-  position: relative;
-  width: 40px;
-  height: 80px;
-}
-.loader div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
-  border: 4px solid #787878;
-  border-radius: 50%;
-  animation: loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #787878 transparent transparent transparent;
-}
-.loader div:nth-child(1) {
-  animation-delay: -0.45s;
-}
-.loader div:nth-child(2) {
-  animation-delay: -0.3s;
-}
-.loader div:nth-child(3) {
-  animation-delay: -0.15s;
-}
-@keyframes loader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 </style>

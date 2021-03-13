@@ -85,8 +85,8 @@ export default defineComponent({
 
 @media (min-width: 800px) {
   .topbar-container {
-    padding: 20px 0 20px 20%;
-    width: 80%;
+    padding: 20px 0 20px 22.5%;
+    width: 77.5%;
     align-items: center;
   }
 }

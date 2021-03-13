@@ -1,5 +1,5 @@
 # modes-media.de 
-Vue/Typescript code for my wesite [modes-media.de](https://modes-media.de)
+Vue/Typescript code for my website [modes-media.de](https://modes-media.de)
 
 ## Project setup
 ```

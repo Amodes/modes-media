@@ -15,3 +15,8 @@ export const getRandomImages = (maxElements?: number): string [] => {
   shuffle(allImageData, maxElements);
   return allImageData;
 };
+
+export const generateRandomNumberFromInterval = (min: number, max: number): number => {
+  const random = Math.floor(Math.random() * (max - min + 1) + min);
+  return random;
+};

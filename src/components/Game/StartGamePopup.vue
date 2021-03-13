@@ -31,9 +31,9 @@ import { defineComponent } from "vue";
 import Game from "./Game.vue";
 
 const TIME_UNTIL_POPUP = 2;
-const START_GAME_TEXT = "makethewebsitegreatagain";
+const START_GAME_TEXT = "makethiswebsitegreatagain";
 
-interface FunSiteData {
+interface StartGameData {
   activeTime: number;
   countdown: number;
   gameStarted: boolean;
@@ -43,9 +43,9 @@ interface FunSiteData {
 }
 
 export default defineComponent({
-  name: "FunSite",
+  name: "StartGamePopup",
   components: { Game },
-  data(): FunSiteData {
+  data(): StartGameData {
     return {
       activeTime: 0,
       countdown: 5,

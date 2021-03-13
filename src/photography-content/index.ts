@@ -16,6 +16,10 @@ export const imageContent = {
     paths: ["paris/a.jpg", "paris/a1.jpg", "paris/b.jpg", "paris/c.jpg", "paris/d.jpg", "paris/e.jpg", "paris/e1.jpg", "paris/g.jpg", "paris/h.jpg", "paris/i.jpg", "paris/j.jpg", "paris/k.jpg", "paris/l.jpg", "paris/m.jpg"],
     title: "Paris",
   },
+  sicily: {
+    paths: ["sicily/1.jpg", "sicily/1a.jpg", "sicily/2.jpg", "sicily/3.jpg", "sicily/5.jpg", "sicily/6.jpg", "sicily/7.jpg", "sicily/8.jpg", "sicily/b.jpg", "sicily/c.jpg", "sicily/d.jpg", "sicily/e.jpg", "sicily/f.jpg"],
+    title: "Sicily",
+  },
   peru: {
     paths: ["peru/1-min.jpg", "peru/2-min.jpg", "peru/3-min.jpg", "peru/4-min.jpg", "peru/5-min.jpg", "peru/6-min.jpg", "peru/7-min.jpg", "peru/8-min.jpg", "peru/9-min.jpg", "peru/a.jpg", "peru/b.jpg", "peru/c.jpg", "peru/d.jpg", "peru/e.jpg", "peru/f.jpg", "peru/g.jpg", "peru/h.jpg", "peru/i.jpg", "peru/j.jpg", "peru/k.jpg", "peru/l.jpg", "peru/m.jpg", "peru/n.jpg", "peru/o.jpg", "peru/p.jpg"],
     title: "Peru",

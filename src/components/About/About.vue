@@ -27,7 +27,8 @@
         I hope you enjoy it.
         <br /><br />
         PS: If you want to reach out, feel free to contact me
-        modes402@gmail.com<br />
+        modes402@gmail.com<br /><br />
+        PS PS: If you want to play a game, type "makethiswebsitegreatagain".
 
         <h2>5 Facts about this website</h2>
         Click on my image 100x times to activate them. (Yes you read corretly,
@@ -84,6 +85,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   padding-bottom: 100px;
+
 }
 
 @media (min-width: 800px) {
@@ -95,8 +97,9 @@ export default defineComponent({
 
 @media (min-width: 800px) {
   .top-section-text {
-    padding-left: 40px;
+    padding-left: 20px;
     font-size: 25px;
+    font-weight: 600;
   }
 }
 
@@ -125,11 +128,12 @@ export default defineComponent({
 
 @media (min-width: 800px) {
   .about {
-    width: 60%;
+    width: 55.5%;
   }
 }
 
 .main-text {
+  font-size: 14px;
   padding-top: 20px;
 }
 

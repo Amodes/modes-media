@@ -47,10 +47,21 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import {
+  prices, emojis, animalIds,
+} from "./constants";
+
+import { generateRandomNumberFromInterval } from "../../helpers/utilities";
+import { calculateNewOffset, calculateSpeed, calculateNewPosition } from "./helpers";
+
+interface Emoji {
+  emoji: string;
+  id: string;
+}
 
 interface GameData {
   firstIteration: boolean;
-  emojis: any;
+  emojis: Emoji[];
   clickedBadThings: [];
   savedAnimals: [];
   lifes: number;
@@ -60,42 +71,6 @@ interface GameData {
   price: string;
   tabKey: number;
 }
-const prices = [
-  "https://giphy.com/embed/WU8nnAdxZWeM8",
-  "https://giphy.com/embed/myuLckXB7OjfGw1gSb",
-  "https://giphy.com/embed/RyqiL8NJMUzvi",
-  "https://giphy.com/embed/401riYDwVhHluIByQH",
-  "https://giphy.com/embed/cYejmY7tuJ4HTmBYHP",
-];
-const emojis = [
-  { emoji: "🐒", id: "monkey" },
-  { emoji: "🦍", id: "gorilla" },
-  { emoji: "🐧", id: "penguin" },
-  { emoji: "🦊", id: "fox" },
-  { emoji: "🦙", id: "lama" },
-  { emoji: "🐥", id: "chicken" },
-  { emoji: "☠️", id: "skull" },
-  { emoji: "🤯", id: "head" },
-  { emoji: "💩", id: "Donald Trump" },
-  { emoji: "🗡️", id: "sword" },
-  { emoji: "🔫", id: "gun" },
-  { emoji: "🔪", id: "knife" },
-  { emoji: "🧨", id: "dynamite" },
-  { emoji: "🚽", id: "Afd" },
-  { emoji: "💣", id: "bomb" },
-  { emoji: "💥", id: "explosion" },
-  { emoji: "🔥", id: "fire" },
-  { emoji: "❄️", id: "ice" },
-  { emoji: "⚡", id: "lightning" },
-];
-const animalIds = ["monkey", "gorilla", "penguin", "fox", "lama", "chicken"];
-// The higher this number the easier the game gets
-const DIFFICULTY = 0.1;
-
-const randomIntFromInterval = (min: number, max: number): number => {
-  const random = Math.floor(Math.random() * (max - min + 1) + min);
-  return random;
-};
 
 export default defineComponent({
   name: "Game",
@@ -115,42 +90,20 @@ export default defineComponent({
   },
   props: { onClose: Function },
   methods: {
-    makeNewPosition() {
-      const h = window.innerWidth;
-      const w = window.innerHeight;
-      const nh = Math.floor(Math.random() * h);
-      const nw = Math.floor(Math.random() * w);
-      return [nh, nw];
-    },
-
     transformEmojis(element) {
-      element.style.fontSize = `${randomIntFromInterval(10, 40)}px`;
+      element.style.fontSize = `${generateRandomNumberFromInterval(10, 40)}px`;
 
-      const newq = this.makeNewPosition();
+      const newOffset = calculateNewOffset();
       const top = element.offsetTop;
       const left = element.offsetLeft;
-      const speed = this.calcSpeed([top, left], newq);
-      const negativeX = Math.random() < 0.5;
-      const negativeY = Math.random() < 0.5;
-      let newX;
-      let newY;
-      if (negativeX) {
-        newX = `-${newq[0]}px`;
-      } else {
-        newX = `${newq[0]}px`;
-      }
-
-      if (negativeY) {
-        newY = `-${newq[1]}px`;
-      } else {
-        newY = `${newq[1]}px`;
-      }
+      const speed = calculateSpeed({ top, left }, newOffset);
+      const newPosition = calculateNewPosition(newOffset);
 
       if (Math.random() > 0.2 || this.firstIteration) {
         element.animate(
           [
-            { transform: `translateX(${newX})` },
-            { transform: `translateY(${newY})` },
+            { transform: `translateX(${newPosition.x})` },
+            { transform: `translateY(${newPosition.y})` },
             { transform: "rotate(180deg)" },
           ],
           {
@@ -160,22 +113,14 @@ export default defineComponent({
       }
 
       setTimeout(() => {
-        element.style.left = `${newq[0]}px`;
-        element.style.top = `${newq[1]}px`;
+        element.style.left = `${newOffset.left}px`;
+        element.style.top = `${newOffset.top}px`;
         if (!this.hasLost && !this.hasWon) {
           this.transformEmojis(element);
         }
       }, speed - 10);
     },
-    calcSpeed(prev, next) {
-      const x = Math.abs(prev[1] - next[1]);
-      const y = Math.abs(prev[0] - next[0]);
-      const greatest = x > y ? x : y;
-      const speedModifier = DIFFICULTY;
-      const speed = Math.ceil(greatest / speedModifier);
-      return speed;
-    },
-    handleClick(emojiData: any) {
+    handleClick(emojiData: Emoji) {
       if (this.hasWon || this.hasLost) {
         return;
       }
