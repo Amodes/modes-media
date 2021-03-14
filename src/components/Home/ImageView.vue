@@ -42,12 +42,13 @@
       <div class="overlay" @click="closeMobileCategory()" />
       <div class="sidebar-container">
         <Sidebar
+          :activeCategory="'random'"
           :handleItemClick="handleItemClick"
         />
       </div>
     </div>
   </div>
-  <div class="loader-container">
+  <div v-if="!maxImagesReached"  class="loader-container">
     <Loader />
   </div>
   <div class="load-more-identifier" />

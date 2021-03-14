@@ -1,5 +1,5 @@
 <template>
-    <div class="loader" v-if="!maxImagesReached" @click="showMore()">
+    <div class="loader">
       <div />
       <div />
       <div />

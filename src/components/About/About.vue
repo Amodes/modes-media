@@ -1,38 +1,42 @@
 <template>
-  <div class="wrapper">
+  <div class="about-wrapper">
     <div class="about">
-      <div class="top-section">
-        <img
-          class="portrait"
-          src="../../assets/images/me.jpg"
-          @click="handleImageClick()"
-        />
-        <div class="top-section-text">
-          Hello, my name is Alex.
-          <div>I like to create digital things.</div>
-        </div>
-      </div>
-      <div class="main-text">
-        Especially software. Currently I work in Berlin as a Fullstack
-        Javascript Developer
-        <a class="kontist" href="https://kontist.com/" target="_blank"
-          >@Kontist</a
-        >.<br />
-        So what is this website about? I'd liked to have an own website but
-        didn't really know what to put there. Maybe some kind of portfolio? Nah,
-        that is a bit boring (Especially as you can just visit linkedin for it).
-        But I don't really had a lot of content for it so I decided "let's just
-        put travel photos here for now". And thats already the story behind this
-        little place of the internet here. <br />
-        I hope you enjoy it.
-        <br /><br />
-        PS: If you want to reach out, feel free to contact me
-        modes402@gmail.com<br /><br />
-        PS PS: If you want to play a game, type "makethiswebsitegreatagain".
+      <div class="top-section-text">Hi, I'm Alex</div>
+      <div class="main-section">
+        <div class="top-section-image">
+          <img
+            class="portrait"
+            src="../../assets/images/me.jpg"
+            @click="handleImageClick()"
+          />
 
-        <h2>5 Facts about this website</h2>
-        Click on my image 100x times to activate them. (Yes you read corretly,
-        100 times)
+          <div class="top-section-bottom-text">
+            <div>I like creating digital things</div>
+          </div>
+        </div>
+
+        <div class="main-text">
+          Especially software.<br />
+          Currently I am working as a Fullstack Javascript Developer in Berlin
+
+          <a class="kontist" href="https://kontist.com/" target="_blank"
+            >@Kontist</a
+          >.<br />
+          So what is this website about? Maybe some kind of portfolio? Nah, that
+          is a bit boring (Especially as you can just visit linkedin for it).
+          But I didn't really had a lot of content for it so I decided "let's
+          just put travel photos here for now". And that's kind of the story
+          behind this little place on the internet here. <br />
+          I hope you enjoy it.
+          <br /><br />
+          PS: If you want to reach out, feel free to contact me
+          modes402@gmail.com<br /><br />
+          PS PS: If you want to play a game, type "makethiswebsitegreatagain".
+
+          <h2>5 Facts about this website</h2>
+          Click on my image 100x times to activate them. (Yes you read corretly,
+          100 times)
+        </div>
       </div>
     </div>
   </div>
@@ -80,33 +84,67 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.wrapper {
+.about-wrapper {
+  width: calc(100% - 60px);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 20px;
   padding-bottom: 100px;
-
+  padding-left: 60px;
 }
 
 @media (min-width: 800px) {
-  .top-section {
+  .about-wrapper {
+    width: calc(55% - 50px);
+    padding-left: calc(22.5% + 50px);
+  }
+}
+
+.about {
+  background-color: #f0d8a6;
+  padding: 20px 10px 50px 10px;
+  width: 100%;
+}
+
+.main-section {
+  padding: 0 10px;
+}
+
+@media (min-width: 800px) {
+  .main-section {
+    padding: 0 50px;
+  }
+}
+
+.top-section-text {
+  font-size: 24px;
+  padding-bottom: 20px;
+  transform: translateX(-50px);
+}
+
+.top-section-image {
+  font-size: 25px;
+}
+
+@media (min-width: 800px) {
+  .top-section-image {
     display: flex;
-    align-items: center;
+    justify-content: center;
   }
+}
+
+.top-section-bottom-text {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 @media (min-width: 800px) {
-  .top-section-text {
+  .top-section-bottom-text {
     padding-left: 20px;
-    font-size: 25px;
-    font-weight: 600;
-  }
-}
-
-@media (max-width: 800px) {
-  .top-section-text {
-    padding-top: 10px;
-    font-size: 25px;
+    transform: translateY(20px);
   }
 }
 
@@ -118,23 +156,19 @@ export default defineComponent({
 
 @media (max-width: 800px) {
   .portrait {
-    width: 100%;
-  }
-}
-
-.about {
-  width: 100%;
-}
-
-@media (min-width: 800px) {
-  .about {
-    width: 55.5%;
+    width: 80%;
   }
 }
 
 .main-text {
   font-size: 14px;
   padding-top: 20px;
+}
+
+@media (min-width: 800px) {
+  .main-text {
+    padding-top: 50px;
+  }
 }
 
 .kontist {

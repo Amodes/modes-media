@@ -113,9 +113,7 @@ export default defineComponent({
         return;
       }
       const animalClicked = animalIds.includes(emojiData.id);
-
       const clickedEmoji = document.getElementById(emojiData.id);
-
       clickedEmoji.style.fontSize = "100px";
 
       setTimeout(() => {
