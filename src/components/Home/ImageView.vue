@@ -51,7 +51,7 @@
   <div v-if="!maxImagesReached"  class="loader-container">
     <Loader />
   </div>
-  <div class="load-more-identifier" />
+  <div class="load-more-identifier"/>
 </template>
 
 <script lang="ts">
@@ -316,6 +316,10 @@ export default defineComponent({
 .loader-container {
   display: flex;
   justify-content: center;
+}
+
+.load-more-identifier {
+  height: 5px;
 }
 
 </style>

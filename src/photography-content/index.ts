@@ -20,6 +20,10 @@ export const imageContent = {
     paths: ["sicily/1.jpg", "sicily/1a.jpg", "sicily/2.jpg", "sicily/3.jpg", "sicily/5.jpg", "sicily/6.jpg", "sicily/7.jpg", "sicily/8.jpg", "sicily/b.jpg", "sicily/c.jpg", "sicily/d.jpg", "sicily/e.jpg", "sicily/f.jpg"],
     title: "Sicily",
   },
+  mexico: {
+    paths: ["mexico/1-min.jpg", "mexico/2-min.jpg", "mexico/3-min.jpg", "mexico/4-min.jpg", "mexico/5-min.jpg", "mexico/6-min.jpg", "mexico/7-min.jpg", "mexico/8-min.jpg", "mexico/9-min.jpg", "mexico/a-min.jpg", "mexico/b-min.jpg", "mexico/c-min.jpg", "mexico/cb.jpg", "mexico/d-min.jpg", "mexico/f-min.jpg", "mexico/g-min.jpg", "mexico/h-min.jpg", "mexico/i-min.jpg", "mexico/j-min.jpg", "mexico/k-min.jpg"],
+    title: "Mexico",
+  },
   peru: {
     paths: ["peru/1-min.jpg", "peru/2-min.jpg", "peru/3-min.jpg", "peru/4-min.jpg", "peru/5-min.jpg", "peru/6-min.jpg", "peru/7-min.jpg", "peru/8-min.jpg", "peru/9-min.jpg", "peru/a.jpg", "peru/b.jpg", "peru/c.jpg", "peru/d.jpg", "peru/e.jpg", "peru/f.jpg", "peru/g.jpg", "peru/h.jpg", "peru/i.jpg", "peru/j.jpg", "peru/k.jpg", "peru/l.jpg", "peru/m.jpg", "peru/n.jpg", "peru/o.jpg", "peru/p.jpg"],
     title: "Peru",
