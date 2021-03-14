@@ -28,7 +28,10 @@ export const imageContent = {
     paths: ["peru/1-min.jpg", "peru/2-min.jpg", "peru/3-min.jpg", "peru/4-min.jpg", "peru/5-min.jpg", "peru/6-min.jpg", "peru/7-min.jpg", "peru/8-min.jpg", "peru/9-min.jpg", "peru/a.jpg", "peru/b.jpg", "peru/c.jpg", "peru/d.jpg", "peru/e.jpg", "peru/f.jpg", "peru/g.jpg", "peru/h.jpg", "peru/i.jpg", "peru/j.jpg", "peru/k.jpg", "peru/l.jpg", "peru/m.jpg", "peru/n.jpg", "peru/o.jpg", "peru/p.jpg"],
     title: "Peru",
   },
-
+  dolomites: {
+    paths: ["dolomites/1.jpg", "dolomites/2.jpg", "dolomites/3.jpg", "dolomites/4.jpg", "dolomites/5.jpg", "dolomites/6.jpg", "dolomites/7.jpg", "dolomites/8.jpg", "dolomites/9.jpg", "dolomites/a.jpg", "dolomites/b.jpg", "dolomites/c.jpg", "dolomites/d.jpg"],
+    title: "Dolomites",
+  },
 };
 
 export interface ImageContentElement {
