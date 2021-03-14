@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Topbar from "./Topbar.vue";
+import Topbar from "./Topbar/Topbar.vue";
 import Fun from "./Game/StartGamePopup.vue";
 
 export default defineComponent({
