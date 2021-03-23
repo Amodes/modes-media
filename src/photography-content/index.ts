@@ -32,6 +32,10 @@ export const imageContent = {
     paths: ["dolomites/1.jpg", "dolomites/2.jpg", "dolomites/3.jpg", "dolomites/4.jpg", "dolomites/5.jpg", "dolomites/6.jpg", "dolomites/7.jpg", "dolomites/8.jpg", "dolomites/9.jpg", "dolomites/a.jpg", "dolomites/b.jpg", "dolomites/c.jpg", "dolomites/d.jpg"],
     title: "Dolomites",
   },
+  scotland: {
+    paths: ["scotland/1.jpg", "scotland/2.jpg", "scotland/3.jpg", "scotland/4.jpg", "scotland/5.jpg", "scotland/6.jpg", "scotland/7a.jpg", "scotland/8.jpg", "scotland/9.jpg", "scotland/a.jpg", "scotland/b.jpg", "scotland/c.jpg", "scotland/d.jpg", "scotland/e.jpg", "scotland/f.jpg", "scotland/h.jpg", "scotland/j.jpg"],
+    title: "Scotland",
+  },
 };
 
 export interface ImageContentElement {
