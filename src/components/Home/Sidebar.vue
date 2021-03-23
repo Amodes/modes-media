@@ -43,7 +43,7 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   padding: 10px 0 20px 0;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 @media (min-width: 800px) {
@@ -59,7 +59,7 @@ export default defineComponent({
 }
 
 .item:hover {
-  font-size: 18px;
+  font-size: 15px;
   transition: font-size 0.2s;
 }
 
@@ -72,6 +72,7 @@ export default defineComponent({
 
 .shuffle {
   display: flex;
+  align-items: center;
 }
 
 .icon {

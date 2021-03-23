@@ -11,7 +11,7 @@
           />
 
           <div class="top-section-bottom-text">
-            <div>I like creating digital things</div>
+            <div>I like to create digital things</div>
           </div>
         </div>
 
@@ -118,7 +118,8 @@ export default defineComponent({
 }
 
 .top-section-text {
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: 500;
   padding-bottom: 20px;
   transform: translateX(-50px);
 }
@@ -145,6 +146,8 @@ export default defineComponent({
   .top-section-bottom-text {
     padding-left: 20px;
     transform: translateY(20px);
+      font-size: 28px;
+  font-weight: 500;
   }
 }
 
