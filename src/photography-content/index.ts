@@ -36,6 +36,10 @@ export const imageContent = {
     paths: ["scotland/1.jpg", "scotland/2.jpg", "scotland/3.jpg", "scotland/4.jpg", "scotland/5.jpg", "scotland/6.jpg", "scotland/7a.jpg", "scotland/8.jpg", "scotland/9.jpg", "scotland/a.jpg", "scotland/b.jpg", "scotland/c.jpg", "scotland/d.jpg", "scotland/e.jpg", "scotland/f.jpg", "scotland/h.jpg", "scotland/j.jpg"],
     title: "Scotland",
   },
+  madeira: {
+    paths: ["madeira/1b.jpg", "madeira/2b.jpg", "madeira/3b.jpg", "madeira/4.jpg", "madeira/6b.jpg", "madeira/7b.jpg", "madeira/8a.jpg", "madeira/9b.jpg", "madeira/b.jpg", "madeira/d.jpg", "madeira/f.jpg", "madeira/g.jpg", "madeira/h.jpg", "madeira/i.jpg", "madeira/j.jpg", "madeira/m.jpg", "madeira/n.jpg"],
+    title: "Madeira",
+  },
 };
 
 export interface ImageContentElement {
