@@ -43,7 +43,7 @@
       <div class="sidebar-container">
         <Sidebar
           :activeCategory="'random'"
-          :handleItemClick="handleItemClick"
+          v-on:handle-item-click="onItemClick"
         />
       </div>
     </div>
@@ -103,7 +103,7 @@ export default defineComponent({
     }
   },
   methods: {
-    handleItemClick(clickedCategory: keyof typeof imageContent | "random") {
+    onItemClick(clickedCategory: keyof typeof imageContent | "random") {
       if (this.activeCategory === clickedCategory) return;
       this.isLoading = true;
       this.maxImagesReached = false;

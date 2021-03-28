@@ -4,8 +4,8 @@
     <div v-if="isMobile">
       <HamburgerButton @click="showMenu()" />
       <div class="menu" v-if="menuOpen">
-        <div class="close-button" @click="hideMenu()">X</div>
-        <Navigation :closeMenu="hideMenu" />
+        <div class="close-button" @click="onHideMenu()">X</div>
+        <Navigation v-on:hide-menu="onHideMenu" />
       </div>
     </div>
     <div v-else class="right-side-container">
@@ -38,7 +38,7 @@ export default defineComponent({
       document.querySelector("body").style.overflowY = "hidden";
       this.menuOpen = true;
     },
-    hideMenu() {
+    onHideMenu() {
       document.querySelector("body").style.overflowY = "auto";
       this.menuOpen = false;
     },

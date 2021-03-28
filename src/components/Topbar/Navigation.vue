@@ -22,7 +22,6 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Navigation",
-  props: { closeMenu: Function },
   data() {
     return {
       activePage: window.location.pathname,
@@ -32,7 +31,7 @@ export default defineComponent({
     handleMenuClick(item: string) {
       this.activePage = item;
       this.$router.push(item);
-      this.closeMenu();
+      this.$emit("hide-menu");
     },
   },
 });

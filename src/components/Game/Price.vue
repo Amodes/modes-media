@@ -21,7 +21,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Price",
-  props: { priceUrl: String, handleItemClick: Function },
+  props: { priceUrl: String },
   data() {
     return {
       url: this.priceUrl,
