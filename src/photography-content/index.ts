@@ -40,6 +40,26 @@ export const imageContent = {
     paths: ["madeira/1b.jpg", "madeira/2b.jpg", "madeira/3b.jpg", "madeira/4.jpg", "madeira/6b.jpg", "madeira/7b.jpg", "madeira/8a.jpg", "madeira/9b.jpg", "madeira/b.jpg", "madeira/d.jpg", "madeira/f.jpg", "madeira/g.jpg", "madeira/h.jpg", "madeira/i.jpg", "madeira/j.jpg", "madeira/m.jpg", "madeira/n.jpg"],
     title: "Madeira",
   },
+  italy: {
+    paths: ["italy/1.jpg", "italy/2.jpg", "italy/7.jpg", "italy/8.jpg", "italy/9.jpg", "italy/b.jpg"],
+    title: "Venice x Milan",
+  },
+  australia: {
+    paths: ["australia/2.jpg", "australia/3.jpg", "australia/7.jpg", "australia/8.jpg", "australia/a.jpg", "australia/b.jpg", "australia/c.jpg", "australia/d.jpg", "australia/f.jpg", "australia/g.jpg", "australia/h.jpg"],
+    title: "Australia",
+  },
+  newZealand: {
+    paths: ["new-zealand/IMG_2354.jpg", "new-zealand/IMG_2480.jpg", "new-zealand/IMG_2511.jpg", "new-zealand/IMG_3456.jpg", "new-zealand/IMG_3498.jpg", "new-zealand/IMG_3556.jpg", "new-zealand/IMG_3621.jpg", "new-zealand/IMG_3626.jpg", "new-zealand/IMG_3728.jpg", "new-zealand/IMG_3758.jpg", "new-zealand/IMG_3950.jpg", "new-zealand/IMG_3951.jpg", "new-zealand/IMG_4014.jpg", "new-zealand/IMG_4092.jpg", "new-zealand/IMG_4144.jpg", "new-zealand/IMG_4175.jpg"],
+    title: "New Zealand",
+  },
+  hongKong: {
+    paths: ["hong-kong/1.jpg", "hong-kong/2.jpg", "hong-kong/3.jpg", "hong-kong/4.jpg", "hong-kong/5.jpg", "hong-kong/6.jpg", "hong-kong/7.jpg", "hong-kong/8.jpg"],
+    title: "Hong Kong",
+  },
+  israel: {
+    paths: ["israel/1.jpg", "israel/2.jpg", "israel/3.jpg", "israel/4.jpg", "israel/5.jpg", "israel/6.jpg", "israel/6b.jpg", "israel/7.jpg", "israel/8.jpg", "israel/8b.jpg", "israel/a.jpg"],
+    title: "Israel",
+  },
 };
 
 export interface ImageContentElement {
