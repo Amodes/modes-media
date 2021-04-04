@@ -64,14 +64,13 @@ export default defineComponent({
 
 .menu {
   z-index: 20;
-  padding: 20px;
+  padding: 30px;
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background-color: #f0d8a6;
-  color: #fff;
   box-sizing: border-box;
   animation: moveBus 0.6s ease-in;
 }

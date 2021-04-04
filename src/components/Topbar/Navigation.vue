@@ -57,13 +57,11 @@ export default defineComponent({
 .link-item {
   cursor: pointer;
   padding-bottom: 2px;
-  color: #fff;
 }
 
 @media (min-width: 800px) {
   .link-item {
     margin-right: 25px;
-    color: #000;
   }
 }
 
