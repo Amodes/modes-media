@@ -37,6 +37,11 @@ export default defineComponent({
       activeItem: this.activeCategory,
     };
   },
+  watch: {
+    activeCategory(newCategory) {
+      this.activeItem = newCategory;
+    },
+  },
   methods: {
     onClickCategory(item: string) {
       this.$emit("handle-item-click", item);
