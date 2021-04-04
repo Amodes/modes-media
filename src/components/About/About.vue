@@ -28,12 +28,12 @@
           just put travel photos here for now". And that's kind of the story
           behind this little place on the internet here. <br />
           I hope you enjoy it.
-          <br /><br />
-          PS: If you want to reach out, feel free to contact me
-          modes402@gmail.com<br /><br />
-          PS PS: If you want to play a game, type "makethiswebsitegreatagain".
+          <br />
+          If you want to reach out, feel free to contact me
+          modes402@gmail.com<br />
+          By the way: If you want to play a game, type "makethiswebsitegreatagain".
 
-          <h2>5 Facts about this website</h2>
+          <h2 class="facts-title">5 Facts about this website</h2>
           Click on my image 100x times to activate them. (Yes you read corretly,
           100 times)
         </div>
@@ -176,5 +176,9 @@ export default defineComponent({
 
 .kontist {
   color: #5a2fb1;
+}
+
+.facts-title {
+  padding-top: 30px;
 }
 </style>

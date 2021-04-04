@@ -58,6 +58,7 @@ export default defineComponent({
   .items {
     position: fixed;
   }
+
   .items-overlay {
     position: absolute;
     top: 255px;
@@ -65,6 +66,7 @@ export default defineComponent({
     width: 150px;
     background-image: linear-gradient(to bottom, transparent, #fff);
   }
+
   .items-wrapper {
     padding: 10px 10px 30px;
     display: flex;
@@ -74,6 +76,7 @@ export default defineComponent({
     width: 140px;
     overflow-y: auto;
   }
+
   .item {
     height: 30px;
     cursor: pointer;
@@ -91,6 +94,7 @@ export default defineComponent({
     max-height: 75vh;
     overflow-y: auto;
   }
+
   .item {
     height: 30px;
     cursor: pointer;
