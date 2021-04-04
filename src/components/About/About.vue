@@ -28,10 +28,12 @@
           just put travel photos here for now". And that's kind of the story
           behind this little place on the internet here. <br />
           I hope you enjoy it.
-          <br />
+          <br /><br />
           If you want to reach out, feel free to contact me
           modes402@gmail.com<br />
-          By the way: If you want to play a game, type "makethiswebsitegreatagain".
+          <span class="start-game-text"
+            >By the way: If you want to play a game, type
+            "makethiswebsitegreatagain".</span>
 
           <h2 class="facts-title">5 Facts about this website</h2>
           Click on my image 100x times to activate them. (Yes you read corretly,
@@ -146,8 +148,8 @@ export default defineComponent({
   .top-section-bottom-text {
     padding-left: 20px;
     transform: translateY(20px);
-      font-size: 28px;
-  font-weight: 500;
+    font-size: 28px;
+    font-weight: 500;
   }
 }
 
@@ -171,6 +173,12 @@ export default defineComponent({
 @media (min-width: 800px) {
   .main-text {
     padding-top: 50px;
+  }
+}
+
+@media (max-width: 800px) {
+  .start-game-text {
+    display: none;
   }
 }
 
