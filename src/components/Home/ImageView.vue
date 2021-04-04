@@ -42,7 +42,7 @@
       <div class="overlay" @click="closeMobileCategory()" />
       <div class="sidebar-container">
         <Sidebar
-          :activeCategory="'random'"
+          :activeCategory="activeCategory"
           v-on:handle-item-click="onItemClick"
         />
       </div>

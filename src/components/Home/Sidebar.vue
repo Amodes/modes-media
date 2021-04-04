@@ -1,20 +1,27 @@
 <template>
-  <ul class="container">
-    <li class="item shuffle" @click="onClickCategory('random')">
-      <img class="icon" src="../../assets/icons/shuffle.svg" />
-      Shuffle
-      <span class="circle" v-if="activeItem === 'random'"> ● </span>
-    </li>
-    <li
-      v-for="(item, key) in navigationItems"
-      :key="key"
-      @click="onClickCategory(key)"
-      class="item"
-    >
-      {{ item.title }}
-      <span class="circle" v-if="activeItem === key"> ● </span>
-    </li>
-  </ul>
+  <div class="container">
+    <div class="items">
+      <div class="items-overlay" />
+      <ul class="items-wrapper">
+        <li class="item" @click="onClickCategory('random')">
+          <div class="shuffle">
+            <img class="icon" src="../../assets/icons/shuffle.svg" />
+            Shuffle
+            <span class="circle" v-if="activeItem === 'random'"> ● </span>
+          </div>
+        </li>
+        <li
+          v-for="(item, key) in navigationItems"
+          :key="key"
+          @click="onClickCategory(key)"
+          class="item"
+        >
+          {{ item.title }}
+          <span class="circle" v-if="activeItem === key"> ● </span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -23,14 +30,16 @@ import { imageContent } from "../../photography-content";
 
 export default defineComponent({
   name: "Sidebar",
-  data: () => ({
-    navigationItems: imageContent,
-    activeItem: "random",
-  }),
+  props: { activeCategory: String },
+  data() {
+    return {
+      navigationItems: imageContent,
+      activeItem: this.activeCategory,
+    };
+  },
   methods: {
     onClickCategory(item: string) {
       this.$emit("handle-item-click", item);
-      this.activeItem = item;
     },
   },
 });
@@ -38,35 +47,61 @@ export default defineComponent({
 
 <style scoped>
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0 20px 0;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 @media (min-width: 800px) {
   .container {
-    padding: 30px 0 0 0;
+    font-size: 12px;
+  }
+
+  .items {
+    position: fixed;
+  }
+  .items-overlay {
+    position: absolute;
+    top: 255px;
+    height: 35px;
+    width: 150px;
+    background-image: linear-gradient(to bottom, transparent, #fff);
+  }
+  .items-wrapper {
+    padding: 10px 10px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    width: 140px;
+    overflow-y: auto;
+  }
+  .item {
+    height: 30px;
+    cursor: pointer;
+    padding: 10px 0;
+    box-sizing: border-box;
   }
 }
 
-.item {
-  height: 20px;
-  cursor: pointer;
-  padding: 20px 0 0 0;
+@media (max-width: 800px) {
+  .items-wrapper {
+    padding: 10px 10px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 75vh;
+    overflow-y: auto;
+  }
+  .item {
+    height: 30px;
+    cursor: pointer;
+    padding: 20px 0;
+    box-sizing: border-box;
+  }
 }
 
 .item:hover {
   font-size: 15px;
   transition: font-size 0.2s;
-}
-
-@media (min-width: 800px) {
-  .item {
-    cursor: pointer;
-    padding: 10px 0 0 0;
-  }
 }
 
 .shuffle {
