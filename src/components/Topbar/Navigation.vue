@@ -61,12 +61,14 @@ export default defineComponent({
 
 @media (min-width: 800px) {
   .link-item {
+    font-size: 14px;
     margin-right: 25px;
   }
 }
 
 @media (max-width: 800px) {
   .link-item {
+    font-size: 18px;
     padding-top: 30px;
   }
 }

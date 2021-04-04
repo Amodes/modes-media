@@ -105,7 +105,7 @@ export default defineComponent({
 
 .about {
   background-color: #f0d8a6;
-  padding: 20px 10px 50px 10px;
+  padding: 30px 10px 50px 10px;
   width: 100%;
 }
 
