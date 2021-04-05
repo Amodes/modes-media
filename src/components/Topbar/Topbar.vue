@@ -51,8 +51,8 @@ export default defineComponent({
     },
     handleMenuClick(item: string) {
       this.activePage = item;
+      this.onHideMenu();
       this.$router.push(item);
-      this.menuOpen = false;
     },
   },
   mounted() {
@@ -81,7 +81,7 @@ export default defineComponent({
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 120%;
   background-color: #f0d8a6;
   box-sizing: border-box;
   animation: moveBus 0.6s ease-in;
