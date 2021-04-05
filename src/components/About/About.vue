@@ -25,7 +25,7 @@
           So what is this website about? Maybe some kind of portfolio? Nah, that
           is a bit boring (You can visit linkedin for it). But I didn't really
           had a lot of content for it so I decided "let's just put travel photos
-          here for now" <span class="emoji">🤯</span> And that's kind of the
+          here for now". And that's kind of the
           story behind this little place on the internet here. <br />
           I hope you enjoy it.
           <br /><br />
@@ -157,12 +157,14 @@ export default defineComponent({
 @media (min-width: 800px) {
   .portrait {
     width: 300px;
+    align-self: flex-start;
   }
 }
 
 @media (max-width: 800px) {
   .portrait {
     width: 80%;
+    align-self: flex-start;
   }
 }
 
@@ -174,10 +176,6 @@ export default defineComponent({
 @media (min-width: 800px) {
   .main-text {
     padding-top: 50px;
-  }
-
-  .emoji {
-    font-size: 12px;
   }
 }
 
