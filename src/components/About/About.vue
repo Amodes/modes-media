@@ -18,14 +18,14 @@
         <div class="main-text">
           Especially software.<br />
           Currently I am working as a Fullstack Javascript Developer in Berlin
-
           <a class="kontist" href="https://kontist.com/" target="_blank"
             >@Kontist</a
-          >.<br />
+          > where I write code for the Webapp, Mobile App and the Backend.<br />
           So what is this website about? Maybe some kind of portfolio? Nah, that
-          is a bit boring (Especially as you can just visit linkedin for it).
+          is a bit boring (You can visit linkedin for it).
           But I didn't really had a lot of content for it so I decided "let's
-          just put travel photos here for now". And that's kind of the story
+          just put travel photos here for now" <span class="emoji">🤯</span>
+          And that's kind of the story
           behind this little place on the internet here. <br />
           I hope you enjoy it.
           <br /><br />
@@ -184,6 +184,10 @@ export default defineComponent({
 
 .kontist {
   color: #5a2fb1;
+}
+
+.emoji {
+  font-size: 12px;
 }
 
 .facts-title {
