@@ -74,7 +74,25 @@ export default defineComponent({
     top: 255px;
     height: 35px;
     width: 150px;
-    background-image: linear-gradient(to bottom, transparent, #fff);
+
+    background: -moz-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 99%,
+      rgba(255, 255, 255, 1) 100%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 99%,
+      rgba(255, 255, 255, 1) 100%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 99%,
+      rgba(255, 255, 255, 1) 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   }
 
   .items-wrapper {
