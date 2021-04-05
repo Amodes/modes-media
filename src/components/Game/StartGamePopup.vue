@@ -30,7 +30,7 @@
 import { defineComponent } from "vue";
 import Game from "./Game.vue";
 
-const TIME_UNTIL_POPUP = 2;
+const TIME_UNTIL_POPUP = 30;
 const START_GAME_TEXT = "makethiswebsitegreatagain";
 
 interface StartGameData {
@@ -86,7 +86,6 @@ export default defineComponent({
         if (this.userEnteredText.includes(START_GAME_TEXT)) {
           this.showPopup = true;
           this.popupDismissed = false;
-          // this.gameStarted = true;
         }
       });
     },

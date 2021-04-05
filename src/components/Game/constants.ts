@@ -8,10 +8,10 @@ export const prices = [
 
 export const emojis = [
   { emoji: "🐒", id: "monkey" },
-  { emoji: "🦍", id: "gorilla" },
+  { emoji: "🐳", id: "whale" },
   { emoji: "🐧", id: "penguin" },
   { emoji: "🦊", id: "fox" },
-  { emoji: "🦙", id: "lama" },
+  { emoji: "🦩", id: "flamingo" },
   { emoji: "🐥", id: "chicken" },
   { emoji: "☠️", id: "skull" },
   { emoji: "🤯", id: "head" },
@@ -28,6 +28,6 @@ export const emojis = [
   { emoji: "⚡", id: "lightning" },
 ];
 
-export const animalIds = ["monkey", "gorilla", "penguin", "fox", "lama", "chicken"];
-// The higher this number the easier the game gets
-export const DIFFICULTY = 0.1;
+export const animalIds = ["monkey", "whale", "penguin", "fox", "flamingo", "chicken"];
+// The higher this number the harder the game gets
+export const DIFFICULTY = 0.15;

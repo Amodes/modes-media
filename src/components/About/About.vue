@@ -20,20 +20,21 @@
           Currently I am working as a Fullstack Javascript Developer in Berlin
           <a class="kontist" href="https://kontist.com/" target="_blank"
             >@Kontist</a
-          > where I write code for the Webapp, Mobile App and the Backend.<br />
+          >
+          where I write code for the Webapp, Mobile App and the Backend.<br />
           So what is this website about? Maybe some kind of portfolio? Nah, that
-          is a bit boring (You can visit linkedin for it).
-          But I didn't really had a lot of content for it so I decided "let's
-          just put travel photos here for now" <span class="emoji">🤯</span>
-          And that's kind of the story
-          behind this little place on the internet here. <br />
+          is a bit boring (You can visit linkedin for it). But I didn't really
+          had a lot of content for it so I decided "let's just put travel photos
+          here for now" <span class="emoji">🤯</span> And that's kind of the
+          story behind this little place on the internet here. <br />
           I hope you enjoy it.
           <br /><br />
           If you want to reach out, feel free to contact me
           modes402@gmail.com<br />
           <span class="start-game-text"
             >By the way: If you want to play a game, type
-            "makethiswebsitegreatagain".</span>
+            "makethiswebsitegreatagain".</span
+          >
 
           <h2 class="facts-title">5 Facts about this website</h2>
           Click on my image 100x times to activate them. (Yes you read corretly,
@@ -138,7 +139,7 @@ export default defineComponent({
 }
 
 .top-section-bottom-text {
-  padding-top: 10px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -174,6 +175,10 @@ export default defineComponent({
   .main-text {
     padding-top: 50px;
   }
+
+  .emoji {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 800px) {
@@ -184,10 +189,6 @@ export default defineComponent({
 
 .kontist {
   color: #5a2fb1;
-}
-
-.emoji {
-  font-size: 12px;
 }
 
 .facts-title {
