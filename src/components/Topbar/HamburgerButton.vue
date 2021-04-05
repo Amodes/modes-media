@@ -1,5 +1,5 @@
 <template>
-<img src="../../assets/icons/hamburgerIcon.png" />
+  <img src="../../assets/icons/hamburgerIcon.png" />
 </template>
 
 <script lang="ts">
@@ -12,6 +12,6 @@ export default defineComponent({
 
 <style scoped>
 img {
-    width: 50px;
+  width: 40px;
 }
 </style>

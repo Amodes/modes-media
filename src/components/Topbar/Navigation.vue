@@ -22,16 +22,20 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Navigation",
+  props: { activeItem: String },
   data() {
     return {
-      activePage: window.location.pathname,
+      activePage: this.activeItem,
     };
+  },
+  watch: {
+    activeItem(newActivePage) {
+      this.activePage = newActivePage;
+    },
   },
   methods: {
     handleMenuClick(item: string) {
-      this.activePage = item;
-      this.$router.push(item);
-      this.$emit("hide-menu");
+      this.$emit("on-menu-click", item);
     },
   },
 });

@@ -201,7 +201,7 @@ export default defineComponent({
 .wrapper {
   overflow-x: hidden;
   overflow-y: hidden;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

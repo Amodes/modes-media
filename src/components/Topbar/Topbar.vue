@@ -1,15 +1,21 @@
 <template>
   <div class="topbar-container">
-    <div class="name">Alexander Modes</div>
+    <div class="name" @click="handleMenuClick('/')">Alexander Modes</div>
     <div v-if="isMobile">
       <HamburgerButton @click="showMenu()" />
       <div class="menu" v-if="menuOpen">
         <div class="close-button" @click="onHideMenu()">X</div>
-        <Navigation v-on:hide-menu="onHideMenu" />
+        <Navigation
+          :activePage="activePage"
+          v-on:on-menu-click="handleMenuClick"
+        />
       </div>
     </div>
     <div v-else class="right-side-container">
-      <Navigation />
+      <Navigation
+        :activeItem="activePage"
+        v-on:on-menu-click="handleMenuClick"
+      />
       <SocialMedia />
     </div>
   </div>
@@ -28,6 +34,7 @@ export default defineComponent({
     return {
       isMobile: window.innerWidth < 800,
       menuOpen: false,
+      activePage: window.location.pathname,
     };
   },
   methods: {
@@ -40,6 +47,11 @@ export default defineComponent({
     },
     onHideMenu() {
       document.querySelector("body").style.overflowY = "auto";
+      this.menuOpen = false;
+    },
+    handleMenuClick(item: string) {
+      this.activePage = item;
+      this.$router.push(item);
       this.menuOpen = false;
     },
   },
@@ -100,7 +112,7 @@ export default defineComponent({
 }
 
 .name {
-  cursor: context-menu;
+  cursor: pointer;
   width: 60px;
   font-family: "Playfair Display", serif;
   font-size: 18px;

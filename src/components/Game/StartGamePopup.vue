@@ -12,7 +12,7 @@
       </div>
       <div v-else>
         <button class="button" @click="hideAndEndGame()">
-          Stop that trash game!
+          Stop!
         </button>
       </div>
     </div>
