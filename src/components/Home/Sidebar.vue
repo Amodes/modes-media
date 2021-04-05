@@ -55,6 +55,11 @@ export default defineComponent({
   font-size: 16px;
 }
 
+.items-wrapper {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 @media (min-width: 800px) {
   .container {
     font-size: 12px;

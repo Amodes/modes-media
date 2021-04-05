@@ -108,6 +108,7 @@ export default defineComponent({
   left: 0;
   pointer-events: none;
   color: #000;
+  z-index:5;
 }
 
 .popup-bottom-section {

@@ -275,7 +275,9 @@ export default defineComponent({
   flex-direction: column;
 }
 
-.wont-title {
+.won-title {
+  width: 100%;
+  text-align: center;
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
