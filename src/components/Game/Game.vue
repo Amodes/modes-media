@@ -64,7 +64,7 @@ export default defineComponent({
 
   data(): GameData {
     return {
-      emojis,
+      emojis: window.innerWidth < 800 ? emojis.slice(0, emojis.length - 5) : emojis,
       firstIteration: true,
       clickedBadThings: [],
       savedAnimals: [],
@@ -79,7 +79,7 @@ export default defineComponent({
   props: { onClose: Function },
   methods: {
     transformEmojis(element) {
-      element.style.fontSize = `${generateRandomNumberFromInterval(10, 40)}px`;
+      element.style.fontSize = `${generateRandomNumberFromInterval(16, 40)}px`;
 
       const newOffset = calculateNewOffset();
       const top = element.offsetTop;
@@ -212,7 +212,7 @@ export default defineComponent({
 
 .game-data-section {
   background-color: #fff;
-  opacity: 0.1;
+  opacity: 0.5;
   font-size: 12px;
   border-radius: 4px;
   padding: 5px;

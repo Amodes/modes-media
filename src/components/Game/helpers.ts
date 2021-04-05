@@ -1,5 +1,5 @@
 import {
-  DIFFICULTY,
+  DIFFICULTY_DESKTOP, DIFFICULTY_MOBILE,
 } from "./constants";
 
 interface Offset {
@@ -24,10 +24,12 @@ export const calculateNewOffset = (): Offset => {
 };
 
 export const calculateSpeed = (currentOffset: Offset, newOffset: Offset): number => {
+  const isMobile = window.innerWidth < 800;
+  const difficulty = isMobile ? DIFFICULTY_MOBILE : DIFFICULTY_DESKTOP;
   const x = Math.abs(currentOffset.left - newOffset.left);
   const y = Math.abs(currentOffset.top - newOffset.top);
   const greatest = x > y ? x : y;
-  const speed = Math.ceil(greatest / DIFFICULTY);
+  const speed = Math.ceil(greatest / difficulty);
   return speed;
 };
 
