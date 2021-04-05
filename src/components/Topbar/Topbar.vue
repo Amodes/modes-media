@@ -1,6 +1,6 @@
 <template>
   <div class="topbar-container">
-    <div class="name" @click="handleMenuClick('/')">Alexander Modes</div>
+    <div class="name">Alexander Modes</div>
     <div v-if="isMobile">
       <HamburgerButton @click="showMenu()" />
       <div class="menu" v-if="menuOpen">
@@ -74,6 +74,7 @@ export default defineComponent({
   box-sizing: border-box;
   animation: moveBus 0.6s ease-in;
 }
+
 @keyframes moveBus {
   0% {
     left: 100%;
@@ -99,7 +100,7 @@ export default defineComponent({
 }
 
 .name {
-  cursor: pointer;
+  cursor: context-menu;
   width: 60px;
   font-family: "Playfair Display", serif;
   font-size: 18px;

@@ -15,6 +15,11 @@ const routes: Array<RouteRecordRaw> = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ "../components/About/About.vue"),
   },
+  {
+    path: "/imprint",
+    name: "Imprint",
+    component: () => import(/* webpackChunkName: "about" */ "../components/Imprint/Imprint.vue"),
+  },
 ];
 
 const router = createRouter({

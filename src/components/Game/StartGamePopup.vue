@@ -118,18 +118,19 @@ export default defineComponent({
   background-color: #e4e7ed;
   box-shadow: 1px 0px 8px 1px rgba(0, 0, 0, 0.07);
   z-index: 12;
-  font-size: 12px;
 }
 
 @media (max-width: 800px) {
   .popup-bottom-position {
     left: 20px;
+    font-size: 14px;
   }
 }
 
 @media (min-width: 800px) {
   .popup-bottom-position {
     right: 20px;
+    font-size: 12px;
   }
 }
 
