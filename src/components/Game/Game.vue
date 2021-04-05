@@ -79,7 +79,7 @@ export default defineComponent({
   props: { onClose: Function },
   methods: {
     transformEmojis(element) {
-      element.style.fontSize = `${generateRandomNumberFromInterval(16, 40)}px`;
+      element.style.fontSize = `${generateRandomNumberFromInterval(16, 35)}px`;
 
       const newOffset = calculateNewOffset();
       const top = element.offsetTop;
@@ -211,8 +211,8 @@ export default defineComponent({
 }
 
 .game-data-section {
-  background-color: #fff;
-  opacity: 0.5;
+  background-color: rgb(180, 223, 190);
+  opacity: 0.2;
   font-size: 12px;
   border-radius: 4px;
   padding: 5px;

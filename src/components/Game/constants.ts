@@ -27,5 +27,5 @@ export const emojis = [
 
 export const animalIds = ["monkey", "whale", "penguin", "fox", "panda", "chicken"];
 // The higher this number the harder the game gets
-export const DIFFICULTY_DESKTOP = 0.12;
-export const DIFFICULTY_MOBILE = 0.07;
+export const DIFFICULTY_DESKTOP = 0.13;
+export const DIFFICULTY_MOBILE = 0.09;

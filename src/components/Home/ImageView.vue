@@ -275,7 +275,8 @@ export default defineComponent({
   .sidebar-wrapper {
     position: absolute;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    height: -webkit-fill-available;
     left: 0;
   }
 
@@ -289,7 +290,7 @@ export default defineComponent({
   .sidebar-container {
     position: absolute;
     right: 20px;
-    bottom: 20px;
+    bottom: 30px;
     width: calc(100% - 40px);
     background-color: #fff;
     opacity: 0.8;
@@ -303,8 +304,9 @@ export default defineComponent({
 
 .opened-categories {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  padding: 20px;
+  right: 0px;
+  bottom: 0px;
   font-size: 40px;
   z-index: 2;
 }
