@@ -4,12 +4,18 @@
       <div class="top-section-text">Hi, I'm Alex</div>
       <div class="main-section">
         <div class="top-section-image">
-          <img
-            class="portrait"
-            src="../../assets/images/me.jpg"
-            @click="handleImageClick()"
-          />
-
+          <div class="image-with-counter">
+            <img
+              class="portrait"
+              src="../../assets/images/me.jpg"
+              @click="handleImageClick()"
+            />
+            <div class="click-count-wrapper">
+              <div class="click-count" v-if="clickCount > 0">
+                <span v-for="n in clickCount" :key="n"> . </span>
+              </div>
+            </div>
+          </div>
           <div class="top-section-bottom-text">
             <div>I like to create digital things</div>
           </div>
@@ -25,8 +31,8 @@
           So what is this website about? Maybe some kind of portfolio? Nah, that
           is a bit boring (You can visit linkedin for it). But I didn't really
           had a lot of content for it so I decided "let's just put travel photos
-          here for now". And that's kind of the
-          story behind this little place on the internet here. <br />
+          here for now". And that's kind of the story behind this little place
+          on the internet here. <br />
           I hope you enjoy it.
           <br /><br />
           If you want to reach out, feel free to contact me
@@ -37,8 +43,8 @@
           >
 
           <h2 class="facts-title">5 Facts about this website</h2>
-          Click on my image 100x times to activate them. (Yes you read corretly,
-          100 times)
+          Click on my image 50x times to activate them. (Yes you read corretly,
+          50 times)
         </div>
       </div>
     </div>
@@ -48,7 +54,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-const imageClickAmount = 100;
+const imageClickAmount = 50;
 
 interface AboutData {
   clickCount: 0;
@@ -74,12 +80,13 @@ export default defineComponent({
         );
       }
       if (this.clickCount === imageClickAmount * 3) {
-        alert("You really clicked another 100 times? 🤣");
+        alert("You really clicked another 50 times? 🤣");
         alert("That was fun 😈");
         alert("There are no facts you can activate");
         alert("haha");
         alert("haha haha");
         alert("haha haha haha");
+        this.clickCount = 0;
       }
     },
   },
@@ -187,6 +194,14 @@ export default defineComponent({
 
 .kontist {
   color: #5a2fb1;
+}
+
+.click-count-wrapper {
+  height: 10px;
+}
+
+.click-count {
+  font-size: 8px;
 }
 
 .facts-title {
