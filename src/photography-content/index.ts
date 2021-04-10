@@ -21,7 +21,7 @@ export const imageContent = {
     title: "Sicily",
   },
   mexico: {
-    paths: ["mexico/1-min.jpg", "mexico/2-min.jpg", "mexico/3-min.jpg", "mexico/4-min.jpg", "mexico/5-min.jpg", "mexico/6-min.jpg", "mexico/7-min.jpg", "mexico/8-min.jpg", "mexico/9-min.jpg", "mexico/a-min.jpg", "mexico/b-min.jpg", "mexico/c-min.jpg", "mexico/cb.jpg", "mexico/d-min.jpg", "mexico/f-min.jpg", "mexico/g-min.jpg", "mexico/h-min.jpg", "mexico/i-min.jpg", "mexico/j-min.jpg", "mexico/k-min.jpg"],
+    paths: ["mexico/1-min.jpg", "mexico/2-min.jpg", "mexico/3-min.jpg", "mexico/4-min.jpg", "mexico/5-min.jpg", "mexico/6-min.jpg", "mexico/7-min.jpg", "mexico/8-min.jpg", "mexico/9-min.jpg", "mexico/a-min.jpg", "mexico/b-min.jpg", "mexico/c-min.jpg", "mexico/cb.jpg", "mexico/d-min.jpg", "mexico/f-min.jpg", "mexico/g-min.jpg", "mexico/h-min.jpg", "mexico/i-min.jpg", "mexico/k-min.jpg"],
     title: "Mexico",
   },
   peru: {
@@ -33,7 +33,7 @@ export const imageContent = {
     title: "Dolomites",
   },
   scotland: {
-    paths: ["scotland/1.jpg", "scotland/2.jpg", "scotland/3.jpg", "scotland/4.jpg", "scotland/5.jpg", "scotland/6.jpg", "scotland/7a.jpg", "scotland/8.jpg", "scotland/9.jpg", "scotland/a.jpg", "scotland/b.jpg", "scotland/c.jpg", "scotland/d.jpg", "scotland/e.jpg", "scotland/f.jpg", "scotland/h.jpg", "scotland/j.jpg"],
+    paths: ["scotland/1.jpg", "scotland/2.jpg", "scotland/3.jpg", "scotland/5.jpg", "scotland/6.jpg", "scotland/7a.jpg", "scotland/8.jpg", "scotland/9.jpg", "scotland/a.jpg", "scotland/b.jpg", "scotland/c.jpg", "scotland/d.jpg", "scotland/e.jpg", "scotland/f.jpg", "scotland/h.jpg", "scotland/j.jpg"],
     title: "Scotland",
   },
   madeira: {
@@ -49,7 +49,7 @@ export const imageContent = {
     title: "Australia",
   },
   newZealand: {
-    paths: ["new-zealand/IMG_2354.jpg", "new-zealand/IMG_2480.jpg", "new-zealand/IMG_2511.jpg", "new-zealand/IMG_3456.jpg", "new-zealand/IMG_3498.jpg", "new-zealand/IMG_3556.jpg", "new-zealand/IMG_3621.jpg", "new-zealand/IMG_3626.jpg", "new-zealand/IMG_3728.jpg", "new-zealand/IMG_3758.jpg", "new-zealand/IMG_3950.jpg", "new-zealand/IMG_3951.jpg", "new-zealand/IMG_4014.jpg", "new-zealand/IMG_4092.jpg", "new-zealand/IMG_4144.jpg", "new-zealand/IMG_4175.jpg"],
+    paths: ["new-zealand/IMG_2354.jpg", "new-zealand/IMG_2480.jpg", "new-zealand/IMG_2511.jpg", "new-zealand/IMG_3456.jpg", "new-zealand/IMG_3498.jpg", "new-zealand/IMG_3621.jpg", "new-zealand/IMG_3626.jpg", "new-zealand/IMG_3728.jpg", "new-zealand/IMG_3758.jpg", "new-zealand/IMG_3950.jpg", "new-zealand/IMG_3951.jpg", "new-zealand/IMG_4014.jpg", "new-zealand/IMG_4092.jpg", "new-zealand/IMG_4144.jpg", "new-zealand/IMG_4175.jpg"],
     title: "New Zealand",
   },
   hongKong: {
