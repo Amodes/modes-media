@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import ImageView from "../components/Home/ImageView.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -18,12 +18,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/imprint",
     name: "Imprint",
-    component: () => import(/* webpackChunkName: "about" */ "../components/Imprint/Imprint.vue"),
+    component: () => import(/* webpackChunkName: "imprint" */ "../components/Imprint/Imprint.vue"),
   },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes,
 });
 
