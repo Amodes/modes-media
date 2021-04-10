@@ -39,7 +39,7 @@
       class="sidebar-wrapper"
       :style="{ top: `${scrollYPosition}px` }"
     >
-      <div class="overlay" @click="closeMobileCategory()" />
+      <div class="overlay" @click="toggleOpenCategories()" />
       <div class="sidebar-container">
         <Sidebar
           :activeCategory="activeCategory"
@@ -131,9 +131,6 @@ export default defineComponent({
         document.querySelector("body").style.overflowY = "auto";
       }
     },
-    closeMobileCategory() {
-      this.mobileCategoriesOpen = false;
-    },
     onImageLoad() {
       this.numberImagesLoaded++;
     },
@@ -163,8 +160,7 @@ export default defineComponent({
       // needed for load more logic
       const scrolledTo = document.querySelector(".load-more-identifier");
       if (
-        scrolledTo
-        && this.hasScrolledIntoElement(scrolledTo)
+        this.hasScrolledIntoElement(scrolledTo)
         && !this.isLoading
       ) {
         this.isLoading = true;

@@ -2,24 +2,27 @@
   <div class="container">
     <div class="items">
       <div class="items-overlay" />
-      <ul class="items-wrapper">
-        <li class="item" @click="onClickCategory('random')">
-          <div class="shuffle">
-            <img class="icon" src="../../assets/icons/shuffle.svg" />
-            Shuffle
-            <span class="circle" v-if="activeItem === 'random'"> ● </span>
-          </div>
-        </li>
-        <li
-          v-for="(item, key) in navigationItems"
-          :key="key"
-          @click="onClickCategory(key)"
-          class="item"
-        >
-          {{ item.title }}
-          <span class="circle" v-if="activeItem === key"> ● </span>
-        </li>
-      </ul>
+      <div class="items-container">
+        <ul class="items-wrapper">
+          <li class="item" @click="onClickCategory('random')">
+            <div class="shuffle">
+              <img class="icon" src="../../assets/icons/shuffle.svg" />
+              Shuffle
+              <span class="circle" v-if="activeItem === 'random'"> ● </span>
+            </div>
+          </li>
+          <li
+            v-for="(item, key) in navigationItems"
+            :key="key"
+            @click="onClickCategory(key)"
+            class="item"
+          >
+            {{ item.title }}
+            <span class="circle" v-if="activeItem === key"> ● </span>
+          </li>
+        </ul>
+        <div class="arrow" />
+      </div>
     </div>
   </div>
 </template>
@@ -53,6 +56,12 @@ export default defineComponent({
 <style scoped>
 .container {
   font-size: 16px;
+}
+
+.items-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .items-wrapper {
@@ -111,6 +120,26 @@ export default defineComponent({
     padding: 10px 0;
     box-sizing: border-box;
   }
+
+  .arrow {
+  animation: MoveUpDown 2s linear infinite;
+  border: solid #abab;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    margin-top: -5px;
+  }
+  50% {
+    margin-top: 5px;
+  }
+}
 }
 
 @media (max-width: 800px) {
@@ -128,6 +157,9 @@ export default defineComponent({
     cursor: pointer;
     padding: 20px 0;
     box-sizing: border-box;
+  }
+  .arrow {
+    display: none;
   }
 }
 
@@ -150,4 +182,5 @@ export default defineComponent({
 .circle {
   margin-left: 3px;
 }
+
 </style>
