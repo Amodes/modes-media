@@ -2,7 +2,7 @@
   <div class="overlay" v-if="showPopup && !popupDismissed">
     <div class="popup-bottom-section popup-bottom-position">
       <div v-if="!gameStarted">
-        Are you bored?
+        Play a game?
         <div class="button-container">
           <button class="button action-button" @click="hideAndEndGame()">
             No

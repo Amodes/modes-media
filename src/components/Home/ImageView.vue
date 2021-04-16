@@ -32,7 +32,7 @@
       class="opened-categories"
       @click="toggleOpenCategories"
     >
-      <img class="location-icon" src="../../assets/icons/location.svg" />
+      <img class="location-icon" src="../../assets/icons/planet.png" />
     </button>
     <div
       v-if="!isMobile || mobileCategoriesOpen"
@@ -285,9 +285,9 @@ export default defineComponent({
 
   .sidebar-container {
     position: absolute;
-    right: 20px;
-    bottom: 30px;
-    width: calc(100% - 40px);
+    right: 10px;
+    bottom: 20px;
+    width: calc(100% - 20px);
     background-color: #fff;
     opacity: 0.8;
     border-radius: 4px;
