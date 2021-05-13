@@ -3,7 +3,7 @@
     <div class="items">
       <div class="items-overlay" />
       <div class="items-container">
-        <ul class="items-wrapper">
+        <ul class="items-wrapper" id="list">
           <li class="item" @click="onClickCategory('random')">
             <div class="shuffle">
               <img class="icon" src="../../assets/icons/shuffle.svg" />
@@ -21,7 +21,9 @@
             <span class="circle" v-if="activeItem === key"> ● </span>
           </li>
         </ul>
-        <div class="arrow" />
+        <div @click="scroll()" class="arrow-container">
+          <div class="arrow" />
+        </div>
       </div>
     </div>
   </div>
@@ -48,6 +50,10 @@ export default defineComponent({
   methods: {
     onClickCategory(item: string) {
       this.$emit("handle-item-click", item);
+    },
+    scroll() {
+      const list = document.getElementById("list");
+      list.scrollTop += 20;
     },
   },
 });
@@ -121,25 +127,34 @@ export default defineComponent({
     box-sizing: border-box;
   }
 
-  .arrow {
-  animation: MoveUpDown 2s linear infinite;
-  border: solid #abab;
-  border-width: 0 2px 2px 0;
-  display: inline-block;
-  padding: 3px;
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-}
+  .arrow-container {
+    width: 40px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    cursor: pointer;
+  }
 
-@keyframes MoveUpDown {
-  0%,
-  100% {
-    margin-top: -5px;
+  .arrow {
+    animation: MoveUpDown 2s linear infinite;
+    border: solid #abab;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
   }
-  50% {
-    margin-top: 5px;
+
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      margin-top: -5px;
+    }
+    50% {
+      margin-top: 5px;
+    }
   }
-}
 }
 
 @media (max-width: 800px) {
@@ -158,7 +173,7 @@ export default defineComponent({
     padding: 20px 0;
     box-sizing: border-box;
   }
-  .arrow {
+  .arrow-container {
     display: none;
   }
 }
@@ -182,5 +197,4 @@ export default defineComponent({
 .circle {
   margin-left: 3px;
 }
-
 </style>
