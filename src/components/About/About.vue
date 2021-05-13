@@ -129,7 +129,7 @@ export default defineComponent({
 
 .top-section-text {
   font-size: 28px;
-  font-weight: 500;
+  font-weight: 600;
   padding-bottom: 20px;
   transform: translateX(-50px);
 }
@@ -157,7 +157,7 @@ export default defineComponent({
     padding-left: 20px;
     transform: translateY(20px);
     font-size: 28px;
-    font-weight: 500;
+    font-weight: 600;
   }
 }
 
