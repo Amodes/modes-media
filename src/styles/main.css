@@ -2,14 +2,16 @@
 html {
   scrollbar-width: none;
   -ms-overflow-style: none;  /* IE 10+ */
+  scroll-behavior: smooth;
+
 }
 
 body {
   font-family: 'Karla', sans-serif;  background-color: #FFFFFF;
-    margin: 0;
-    overflow-y:scroll;
-    overflow-x:hidden;
-    font-weight: 400;
+  margin: 0;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  font-weight: 400;  
 }
 
 ::-webkit-scrollbar {
