@@ -49,7 +49,7 @@ export const imageContent = {
     title: "Australia",
   },
   newZealand: {
-    paths: ["new-zealand/IMG_2354.jpg", "new-zealand/IMG_2480.jpg", "new-zealand/IMG_2511.jpg", "new-zealand/IMG_3456.jpg", "new-zealand/IMG_3498.jpg", "new-zealand/IMG_3621.jpg", "new-zealand/IMG_3626.jpg", "new-zealand/IMG_3728.jpg", "new-zealand/IMG_3758.jpg", "new-zealand/IMG_3950.jpg", "new-zealand/IMG_3951.jpg", "new-zealand/IMG_4014.jpg", "new-zealand/IMG_4092.jpg", "new-zealand/IMG_4144.jpg", "new-zealand/IMG_4175.jpg"],
+    paths: ["new-zealand/IMG_2354.jpg", "new-zealand/IMG_2480.jpg", "new-zealand/IMG_2511.jpg", "new-zealand/IMG_3456.jpg", "new-zealand/IMG_3498.jpg", "new-zealand/IMG_3621.jpg", "new-zealand/IMG_3626.jpg", "new-zealand/IMG_3728.jpg", "new-zealand/IMG_3758.jpg", "new-zealand/IMG_3950.jpg", "new-zealand/IMG_4014.jpg", "new-zealand/IMG_4092.jpg", "new-zealand/IMG_4144.jpg", "new-zealand/IMG_4175.jpg"],
     title: "New Zealand",
   },
   hongKong: {
