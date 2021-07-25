@@ -1,7 +1,7 @@
 <template>
   <div class="about-wrapper">
     <div class="about">
-      <div class="top-section-text">Hi, I'm Alex</div>
+      <h2 class="top-section-text">Hi, I'm Alex</h2>
       <div class="main-section">
         <div class="top-section-image">
           <div class="image-with-counter">
@@ -130,7 +130,8 @@ export default defineComponent({
 .top-section-text {
   font-size: 28px;
   font-weight: 600;
-  padding-bottom: 20px;
+  padding: 0 0 20px;
+  margin: 0;
   transform: translateX(-50px);
 }
 

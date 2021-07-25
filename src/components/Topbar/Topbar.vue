@@ -1,6 +1,6 @@
 <template>
   <div class="topbar-container">
-    <div class="name" @click="handleMenuClick('/')">Alexander Modes</div>
+    <h1 class="name" @click="handleMenuClick('/')">Alexander Modes</h1>
     <div v-if="isMobile">
       <HamburgerButton @click="showMenu()" />
       <div class="menu" v-if="menuOpen">
@@ -118,6 +118,8 @@ export default defineComponent({
   font-size: 18px;
   font-weight: 500;
   border-radius: 2px;
+  padding: 0;
+  margin:0;
 }
 
 .right-side-container {
