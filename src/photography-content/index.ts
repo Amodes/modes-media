@@ -1,5 +1,9 @@
 // TODO maybe add year and places to the object (for hovering)
 export const imageContent = {
+  switzerland: {
+    paths: ["switzerland/a.jpg", "switzerland/b.jpg", "switzerland/c.jpg", "switzerland/d.jpg", "switzerland/e.jpg", "switzerland/f.jpg", "switzerland/g.jpg", "switzerland/h.jpg"],
+    title: "Switzerland",
+  },
   portugal: {
     paths: ["portugal/1.jpg", "portugal/2.jpg", "portugal/3.jpg", "portugal/4.jpg", "portugal/5.jpg", "portugal/7.jpg", "portugal/8.jpg", "portugal/9.jpg", "portugal/a.jpg", "portugal/b.jpg", "portugal/c.jpg", "portugal/d.jpg", "portugal/e.jpg", "portugal/f.jpg", "portugal/g.jpg"],
     title: "Portugal",
@@ -17,7 +21,7 @@ export const imageContent = {
     title: "Paris",
   },
   sicily: {
-    paths: ["sicily/1.jpg", "sicily/1a.jpg", "sicily/2.jpg", "sicily/3.jpg", "sicily/5.jpg", "sicily/6.jpg", "sicily/7.jpg", "sicily/8.jpg", "sicily/b.jpg", "sicily/c.jpg", "sicily/d.jpg", "sicily/e.jpg", "sicily/f.jpg"],
+    paths: ["sicily/1.jpg", "sicily/1a.jpg", "sicily/2.jpg", "sicily/3.jpg", "sicily/5.jpg", "sicily/6.jpg", "sicily/7.jpg", "sicily/8.jpg", "sicily/b.jpg", "sicily/c.jpg", "sicily/d.jpg", "sicily/f.jpg"],
     title: "Sicily",
   },
   mexico: {
