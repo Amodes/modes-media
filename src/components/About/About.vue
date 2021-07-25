@@ -7,7 +7,7 @@
           <div class="image-with-counter">
             <img
               class="portrait"
-              src="../../assets/images/me.jpg"
+              src="../../assets/images/alex-modes.jpg"
               @click="handleImageClick()"
             />
             <div class="click-count-wrapper">
