@@ -48,10 +48,10 @@
       </div>
     </div>
   </div>
-  <div v-if="!maxImagesReached"  class="loader-container">
+  <div v-if="!maxImagesReached" class="loader-container">
     <Loader />
   </div>
-  <div class="load-more-identifier"/>
+  <div class="load-more-identifier" />
 </template>
 
 <script lang="ts">
@@ -160,10 +160,7 @@ export default defineComponent({
       this.scrollYPosition = window.scrollY;
       // needed for load more logic
       const scrolledTo = document.querySelector(".load-more-identifier");
-      if (
-        this.hasScrolledIntoElement(scrolledTo)
-        && !this.isLoading
-      ) {
+      if (this.hasScrolledIntoElement(scrolledTo) && !this.isLoading) {
         this.isLoading = true;
         setTimeout(() => {
           this.showMore();
@@ -303,6 +300,7 @@ export default defineComponent({
   bottom: 0px;
   font-size: 40px;
   z-index: 2;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .location-icon {
@@ -317,5 +315,4 @@ export default defineComponent({
 .load-more-identifier {
   height: 5px;
 }
-
 </style>
