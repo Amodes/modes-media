@@ -122,6 +122,7 @@ export default defineComponent({
       }
 
       this.activeCategory = clickedCategory;
+      window.scrollTo(0, 0);
     },
     toggleOpenCategories() {
       this.mobileCategoriesOpen = !this.mobileCategoriesOpen;
