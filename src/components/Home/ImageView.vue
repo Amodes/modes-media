@@ -190,9 +190,6 @@ export default defineComponent({
       this.isMobile = window.innerWidth < 800;
     },
     showImageInPopup(path: string) {
-      if (this.isMobile) {
-        return;
-      }
       this.currentOpenedImage = path;
       if (path) {
         document.querySelector("body").style.overflowY = "hidden";
@@ -235,8 +232,8 @@ export default defineComponent({
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #000;
-  opacity: 0.8;
+  background-color: #fff;
+  opacity: 0.95;
 }
 
 .popup-image {
