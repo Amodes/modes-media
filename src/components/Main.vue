@@ -1,10 +1,10 @@
 <template>
   <div class="main">
     <div>
-      <Topbar />
+      <Topbar  :key="componentKey"/>
     </div>
     <Fun />
-    <div class="content-area">
+    <div class="content-area"  :key="componentKey">
       <router-view />
     </div>
   </div>
@@ -21,10 +21,21 @@ import Fun from "./Game/StartGamePopup.vue";
 export default defineComponent({
   name: "Main",
   components: { Topbar, Fun },
+  data() {
+    return {
+      componentKey: 0,
+    };
+  },
   methods: {
     onClickImprint() {
       this.$router.push("imprint");
     },
+  },
+  mounted() {
+    window.onpopstate = () => {
+      this.componentKey += 1;
+      this.$forceUpdate();
+    };
   },
 });
 </script>
