@@ -63,7 +63,7 @@ import { imageContent } from "../../photography-content";
 import { getRandomImages } from "../../helpers/utilities";
 
 interface ImageViewData {
-  activeCategory: keyof typeof imageContent | "random";
+  activeCategory: string;
   allImages: string[];
   shownImagesBlocks: string[][];
   maxImagesReached: boolean;
@@ -76,12 +76,13 @@ interface ImageViewData {
 }
 
 const numberImageBlock = 10;
+const mostRecentCategoryKey = Object.keys(imageContent)[0];
 
 export default defineComponent({
   name: "ImageView",
   data(): ImageViewData {
     return {
-      activeCategory: "random",
+      activeCategory: mostRecentCategoryKey,
       allImages: [],
       shownImagesBlocks: [],
       maxImagesReached: false,
@@ -97,9 +98,8 @@ export default defineComponent({
   created() {
     if (!this.shownImagesBlocks.length) {
       this.isLoading = true;
-      const randomImages = getRandomImages();
-      this.allImages = randomImages;
-      this.shownImagesBlocks.push(randomImages.slice(0, numberImageBlock));
+      this.allImages = imageContent[mostRecentCategoryKey].paths;
+      this.shownImagesBlocks = [this.allImages.slice(0, numberImageBlock)];
     }
   },
   methods: {
