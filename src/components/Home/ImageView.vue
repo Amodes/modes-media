@@ -98,7 +98,14 @@ export default defineComponent({
   created() {
     if (!this.shownImagesBlocks.length) {
       this.isLoading = true;
-      this.allImages = imageContent[mostRecentCategoryKey].paths;
+
+      if (this.$route.query.category && imageContent[this.$route.query.category]) {
+        this.allImages = imageContent[this.$route.query.category].paths;
+        this.activeCategory = this.$route.query.category;
+      } else {
+        this.allImages = imageContent[mostRecentCategoryKey].paths;
+      }
+
       this.shownImagesBlocks = [this.allImages.slice(0, numberImageBlock)];
     }
   },
@@ -106,6 +113,7 @@ export default defineComponent({
     onItemClick(clickedCategory: keyof typeof imageContent | "random") {
       if (this.activeCategory === clickedCategory) return;
       this.isLoading = true;
+      this.$router.push({ query: { category: clickedCategory } });
       this.maxImagesReached = false;
       this.numberImagesLoaded = 0;
 
