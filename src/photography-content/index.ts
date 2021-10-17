@@ -1,5 +1,9 @@
 // TODO maybe add year and places to the object (for hovering)
 export const imageContent = {
+  iceland: {
+    paths: ["iceland/a.jpg", "iceland/b.jpg", "iceland/c.jpg", "iceland/e.jpg", "iceland/f.jpg", "iceland/g.jpg", "iceland/h.jpg", "iceland/j.jpg", "iceland/k.jpg", "iceland/l.jpg", "iceland/m.jpg", "iceland/m1.jpg", "iceland/n.jpg", "iceland/o.jpg", "iceland/p.jpg", "iceland/q.jpg", "iceland/r.jpg"],
+    title: "Iceland",
+  },
   tanzania: {
     paths: ["tanzania/b.jpg", "tanzania/a.jpg", "tanzania/c.jpg", "tanzania/d.jpg", "tanzania/e.jpg", "tanzania/f.jpg", "tanzania/g.jpg", "tanzania/h.jpg", "tanzania/i.jpg", "tanzania/k.jpg", "tanzania/l.jpg", "tanzania/m.jpg", "tanzania/n.jpg", "tanzania/o.jpg", "tanzania/p.jpg", "tanzania/q.jpg", "tanzania/r.jpg", "tanzania/s.jpg", "tanzania/t.jpg", "tanzania/u.jpg", "tanzania/v.jpg", "tanzania/w.jpg", "tanzania/x.jpg", "tanzania/x2.jpg", "tanzania/y.jpg", "tanzania/z.jpg", "tanzania/z2.jpg"],
     title: "Tanzania",
