@@ -20,6 +20,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "Imprint",
     component: () => import(/* webpackChunkName: "imprint" */ "../components/Imprint/Imprint.vue"),
   },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "Photography",
+    component: ImageView,
+  },
 ];
 
 const router = createRouter({

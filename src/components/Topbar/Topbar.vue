@@ -37,6 +37,9 @@ export default defineComponent({
       activePage: window.location.pathname,
     };
   },
+  created() {
+    this.activePage = window.location.hash.substring(1);
+  },
   methods: {
     onResize() {
       this.isMobile = window.innerWidth < 800;
