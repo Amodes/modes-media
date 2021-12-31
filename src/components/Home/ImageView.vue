@@ -76,13 +76,13 @@ interface ImageViewData {
 }
 
 const numberImageBlock = 10;
-const mostRecentCategoryKey = Object.keys(imageContent)[0];
+const randomCategory = "random";
 
 export default defineComponent({
   name: "ImageView",
   data(): ImageViewData {
     return {
-      activeCategory: mostRecentCategoryKey,
+      activeCategory: randomCategory,
       allImages: [],
       shownImagesBlocks: [],
       maxImagesReached: false,
@@ -103,7 +103,9 @@ export default defineComponent({
         this.allImages = imageContent[this.$route.query.category].paths;
         this.activeCategory = this.$route.query.category;
       } else {
-        this.allImages = imageContent[mostRecentCategoryKey].paths;
+        const randomImages = getRandomImages();
+        this.allImages = randomImages;
+        this.shownImagesBlocks.push(randomImages.slice(0, numberImageBlock));
       }
 
       this.shownImagesBlocks = [this.allImages.slice(0, numberImageBlock)];
@@ -117,7 +119,7 @@ export default defineComponent({
       this.maxImagesReached = false;
       this.numberImagesLoaded = 0;
 
-      if (clickedCategory === "random") {
+      if (clickedCategory === randomCategory) {
         const randomImages = getRandomImages();
         this.allImages = randomImages;
         this.shownImagesBlocks = [randomImages.slice(0, numberImageBlock)];
