@@ -1,4 +1,4 @@
-import { imageContent } from "../photography-content";
+import { imageContent, priorityList } from "../photography-content";
 
 export const shuffle = (array: string[], maxElements?: number): void => {
   for (let i = (maxElements || (array.length - 1)); i > 0; i--) {
@@ -7,13 +7,18 @@ export const shuffle = (array: string[], maxElements?: number): void => {
   }
 };
 
-export const getRandomImages = (maxElements?: number): string [] => {
+const getPriorityImages = (images: string []): string [] => images.filter((image) => priorityList.includes(image));
+
+export const getRandomImages = (maxElements?: number): string[] => {
   const allImageData: string[] = [];
-  Object.keys(imageContent).forEach((categoryData) => {
-    allImageData.push(...imageContent[categoryData as keyof typeof imageContent].paths);
+  Object.keys(imageContent).forEach((categoryKey) => {
+    allImageData.push(...imageContent[categoryKey].paths);
   });
-  shuffle(allImageData, maxElements);
-  return allImageData;
+
+  const priorityImages = getPriorityImages(allImageData);
+
+  shuffle(priorityImages, maxElements);
+  return priorityImages;
 };
 
 export const generateRandomNumberFromInterval = (min: number, max: number): number => {

@@ -1,3 +1,5 @@
+export const priorityList = ["iceland/a.jpg", "iceland/l.jpg", "tanzania/a.jpg", "tanzania/i.jpg", "tanzania/b.jpg", "tanzania/n.jpg", "portugal/g.jpg", "tanzania/c.jpg", "tanzania/f.jpg", "tanzania/l.jpg", "switzerland/h.jpg", "portugal/9.jpg", "portugal/e.jpg", "portugal/f.jpg", "vietnam/1.jpg", "vietnam/5.jpg", "vietnam/9.jpg", "vietnam/h.jpg", "turkey/a.jpg", "turkey/h.jpg", "turkey/n.jpg", "paris/a.jpg", "paris/c.jpg", "paris/d.jpg", "paris/e1.jpg", "paris/m.jpg", "paris/j.jpg", "sicily/1.jpg", "mexico/7-min.jpg", "mexico/b-min.jpg", "mexico/h-min.jpg", "peru/3-min.jpg", "peru/4-min.jpg", "peru/6-min.jpg", "peru/7-min.jpg", "peru/d.jpg", "peru/f.jpg", "peru/g.jpg", "peru/j.jpg", "peru/o.jpg", "dolomites/1.jpg", "dolomites/c.jpg", "scotland/7a.jpg", "scotland/j.jpg", "scotland/3.jpg", "madeira/1b.jpg", "madeira/2b.jpg", "madeira/4.jpg", "italy/2.jpg", "italy/7.jpg", "new-zealand/IMG_2480.jpg", "new-zealand/IMG_3456.jpg", "new-zealand/IMG_3728.jpg", "new-zealand/IMG_4092.jpg", "hong-kong/1.jpg", "hong-kong/3.jpg", "israel/1.jpg"];
+
 // TODO maybe add year and places to the object (for hovering)
 export const imageContent = {
   iceland: {
