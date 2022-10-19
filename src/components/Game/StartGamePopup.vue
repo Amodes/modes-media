@@ -30,7 +30,7 @@
 import { defineComponent } from "vue";
 import Game from "./Game.vue";
 
-const TIME_UNTIL_POPUP = 1;
+const TIME_UNTIL_POPUP = 30;
 const START_GAME_TEXT = "makethiswebsitegreatagain";
 
 interface StartGameData {
