@@ -163,7 +163,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: calc(100vh - 140px);
+    max-height: calc(100vh - 200px);
     overflow-y: auto;
   }
 
