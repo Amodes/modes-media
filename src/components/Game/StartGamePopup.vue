@@ -122,7 +122,7 @@ export default defineComponent({
 
 @media (max-width: 800px) {
   .popup-bottom-position {
-    right: 5px;
+    right: 10px;
     font-size: 12px;
   }
 }

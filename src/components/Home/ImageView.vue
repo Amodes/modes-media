@@ -299,9 +299,10 @@ export default defineComponent({
     right: 10px;
     bottom: 20px;
     width: calc(100% - 20px);
-    background-color: #fff;
-    opacity: 0.8;
+    background-color: #f0d8a6;
+    opacity: 1;
     border-radius: 4px;
+    z-index: 5;
   }
 }
 
@@ -317,6 +318,7 @@ export default defineComponent({
   width: 100%;
   right: 0px;
   bottom: 0px;
+  z-index: 3;
 }
 
 .opened-categories {
