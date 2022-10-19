@@ -142,7 +142,7 @@ export default defineComponent({
     toggleOpenCategories() {
       this.mobileCategoriesOpen = !this.mobileCategoriesOpen;
       if (this.mobileCategoriesOpen) {
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
         document.querySelector("body").style.overflowY = "hidden";
       } else {
         document.querySelector("body").style.overflowY = "auto";
@@ -283,13 +283,13 @@ export default defineComponent({
     position: absolute;
     width: 100%;
     height: 100%;
-    height: -webkit-fill-available;
     left: 0;
+    z-index: 5;
   }
 
   .overlay {
     width: 100%;
-    height: 120%;
+    height: 100%;
     background-color: #000;
     opacity: 0.8;
   }
@@ -297,7 +297,8 @@ export default defineComponent({
   .sidebar-container {
     position: absolute;
     right: 10px;
-    bottom: 20px;
+    bottom: 50px;
+    height: calc(100% - 100px);
     width: calc(100% - 20px);
     background-color: #f0d8a6;
     opacity: 1;
