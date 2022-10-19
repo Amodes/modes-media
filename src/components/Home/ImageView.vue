@@ -27,13 +27,15 @@
         </div>
       </div>
     </div>
-    <button
-      v-if="isMobile"
-      class="opened-categories"
-      @click="toggleOpenCategories"
-    >
-      <img class="location-icon" src="../../assets/icons/planet.png" />
-    </button>
+    <div class="opened-categories-container">
+      <button
+        v-if="isMobile"
+        class="opened-categories"
+        @click="toggleOpenCategories"
+      >
+        <img class="location-icon" src="../../assets/icons/planet.png" />
+      </button>
+    </div>
     <div
       v-if="!isMobile || mobileCategoriesOpen"
       class="sidebar-wrapper"
@@ -99,7 +101,10 @@ export default defineComponent({
     if (!this.shownImagesBlocks.length) {
       this.isLoading = true;
 
-      if (this.$route.query.category && imageContent[this.$route.query.category]) {
+      if (
+        this.$route.query.category
+        && imageContent[this.$route.query.category]
+      ) {
         this.allImages = imageContent[this.$route.query.category].paths;
         this.activeCategory = this.$route.query.category;
       } else {
@@ -304,18 +309,25 @@ export default defineComponent({
   height: 1px;
 }
 
-.opened-categories {
+.opened-categories-container {
   position: fixed;
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   right: 0px;
   bottom: 0px;
+}
+
+.opened-categories {
+  padding: 10px;
   font-size: 40px;
   z-index: 2;
   -webkit-tap-highlight-color: transparent;
 }
 
 .location-icon {
-  width: 50px;
+  width: 65px;
 }
 
 .loader-container {
