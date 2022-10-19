@@ -142,7 +142,6 @@ export default defineComponent({
     toggleOpenCategories() {
       this.mobileCategoriesOpen = !this.mobileCategoriesOpen;
       if (this.mobileCategoriesOpen) {
-        // window.scrollTo(0, 0);
         document.querySelector("body").style.overflowY = "hidden";
       } else {
         document.querySelector("body").style.overflowY = "auto";
