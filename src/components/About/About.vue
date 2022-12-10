@@ -23,9 +23,9 @@
 
         <div class="main-text">
           Especially software.<br />
-          Currently I am working as a Fullstack Javascript Developer in Berlin
-          <a class="kontist" href="https://kontist.com/" target="_blank"
-            >@Kontist</a
+          Currently I am working as a Sr. Fullstack Developer in Berlin
+          <a class="deed" href="https://joindeed.com/" target="_blank"
+            >@Deed</a
           >
           where I write code for the Webapp, Mobile App and the Backend.<br />
           So what is this website about? Maybe some kind of portfolio? Nah, that
@@ -194,7 +194,7 @@ export default defineComponent({
   }
 }
 
-.kontist {
+.deed {
   color: #5a2fb1;
 }
 
