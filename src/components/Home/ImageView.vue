@@ -306,10 +306,6 @@ export default defineComponent({
   }
 }
 
-.loadMoreIdentifier {
-  height: 1px;
-}
-
 .opened-categories-container {
   position: fixed;
   display: flex;
