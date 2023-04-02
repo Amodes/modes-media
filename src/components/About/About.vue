@@ -39,7 +39,7 @@
            </p>
 
           <p>If you have any questions, comments, or just want to say hello, feel free to drop me a line at modes402@gmail.com. I'm always happy to connect with like-minded individuals.</p>
-          <p class="start-game-text">Oh, and if you're feeling extra brave, try typing <i>"makethiswebsitegreatagain"</i> in order to play a super weird game or click 50 times on my picture to get a suprise.</p>
+          <p class="start-game-text">Oh, and if you're feeling extra brave, try typing <i>"birdsarecool"</i> in order to play a super weird game or click 50 times on my picture to get a suprise.</p>
 
         </div>
       </div>

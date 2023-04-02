@@ -31,7 +31,7 @@ import { defineComponent } from "vue";
 import Game from "./Game.vue";
 
 const TIME_UNTIL_POPUP = 30;
-const START_GAME_TEXT = "makethiswebsitegreatagain";
+const START_GAME_TEXT = "birdsarecool";
 
 interface StartGameData {
   activeTime: number;
