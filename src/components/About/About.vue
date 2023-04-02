@@ -22,29 +22,25 @@
         </div>
 
         <div class="main-text">
-          Especially software.<br />
-          Currently I am working as a Sr. Fullstack Developer in Berlin
-          <a class="deed" href="https://joindeed.com/" target="_blank"
+          <p>
+          Greetings! I am Alex, a Senior Software Engineer with extensive experience in full-stack development,
+          currently working at
+            <a class="deed" href="https://joindeed.com/" target="_blank"
             >@Deed</a
           >
-          where I write code for the Webapp, Mobile App and the Backend.<br />
-          So what is this website about? Maybe some kind of portfolio? Nah, that
-          is a bit boring (You can visit linkedin for it). But I didn't really
-          had a lot of content for it so I decided "let's just put travel photos
-          here for now". And that's kind of the story behind this little place
-          on the internet here. <br />
-          I hope you enjoy it.
-          <br /><br />
-          If you want to reach out, feel free to contact me
-          modes402@gmail.com<br />
-          <span class="start-game-text"
-            >By the way: If you want to play a game, type
-            "makethiswebsitegreatagain".</span
-          >
+           in Berlin. My day-to-day work involves coding for web applications, mobile applications, and backend systems.</p>
 
-          <h2 class="facts-title">5 Facts about this website</h2>
-          Click on my image 50x times to activate them. (Yes you read corretly,
-          50 times)
+           <p>
+             When I first started to code this website, I wanted to create a classic programmer portfolio page. But let's be honest, you're probably not here to read my resume.
+             And honestly, who can blame you? Unless you're a hiring manager or recruiter, my work experience might not be the most thrilling thing to read about.
+             So, let me share with you a little about my other passions - traveling and photography.<br/>
+             I believe that traveling is not just a way to escape the daily grind, but also a way to broaden your horizons, expand your perspective, and gain new insights that can be applied to your personal and professional life.
+             That's why I've decided to make this website mainly about my travel photos.
+           </p>
+
+          <p>If you have any questions, comments, or just want to say hello, feel free to drop me a line at modes402@gmail.com. I'm always happy to connect with like-minded individuals.</p>
+          <p class="start-game-text">Oh, and if you're feeling extra brave, try typing <i>"makethiswebsitegreatagain"</i> in order to play a super weird game or click 50 times on my picture to get a suprise.</p>
+
         </div>
       </div>
     </div>
@@ -179,7 +175,7 @@ export default defineComponent({
 
 .main-text {
   font-size: 14px;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 @media (min-width: 800px) {
@@ -206,7 +202,4 @@ export default defineComponent({
   font-size: 8px;
 }
 
-.facts-title {
-  padding-top: 30px;
-}
 </style>
