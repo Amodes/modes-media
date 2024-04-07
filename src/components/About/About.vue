@@ -25,7 +25,7 @@
           <p>
           Greetings! I am Alex, a Senior Software Engineer with extensive experience in full-stack development,
           currently working at
-            <a class="deed" href="https://joindeed.com/" target="_blank"
+            <a class="link" href="https://joindeed.com/" target="_blank"
             >@Deed</a
           >
            in Berlin. My day-to-day work involves coding for web applications, mobile applications, and backend systems.</p>
@@ -34,7 +34,7 @@
              Let me share with you a little about my other passions besides programming - traveling and photography.<br/>
              I believe that traveling is not just a way to escape the daily grind, but also a way to broaden your horizons, expand your perspective, and gain new insights that can be applied to your personal and professional life.
              That's why I've decided to make this website mainly about my travel photos.<br/>
-             Additionally, I maintain a 'real' travel blog called <a class="deed" href="https://unlimitedhills.com/" target="_blank">Unlimited Hills</a>, feel free to check that out if you want to know more about my travel experiences, besides photos.
+             Additionally, I maintain a 'real' travel blog called <a class="link" href="https://unlimitedhills.com/" target="_blank">Unlimited Hills</a>, feel free to check that out if you want to know more about my travel experiences, besides photos.
            </p>
 
           <p>If you have any questions, comments, or just want to say hello, feel free to drop me a line at modes402@gmail.com. I'm always happy to connect with like-minded individuals.</p>
@@ -189,7 +189,7 @@ export default defineComponent({
   }
 }
 
-.deed {
+.link {
   color: #5a2fb1;
 }
 
