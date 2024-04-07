@@ -31,11 +31,10 @@
            in Berlin. My day-to-day work involves coding for web applications, mobile applications, and backend systems.</p>
 
            <p>
-             When I first started to code this website, I wanted to create a classic programmer portfolio page. But let's be honest, you're probably not here to read my resume.
-             And honestly, who can blame you? Unless you're a hiring manager or recruiter, my work experience might not be the most thrilling thing to read about.
-             So, let me share with you a little about my other passions - traveling and photography.<br/>
+             Let me share with you a little about my other passions besides programming - traveling and photography.<br/>
              I believe that traveling is not just a way to escape the daily grind, but also a way to broaden your horizons, expand your perspective, and gain new insights that can be applied to your personal and professional life.
-             That's why I've decided to make this website mainly about my travel photos.
+             That's why I've decided to make this website mainly about my travel photos.<br/>
+             Additionally, I maintain a 'real' travel blog called <a class="deed" href="https://unlimitedhills.com/" target="_blank">Unlimited Hills</a>, feel free to check that out if you want to know more about my travel experiences, besides photos.
            </p>
 
           <p>If you have any questions, comments, or just want to say hello, feel free to drop me a line at modes402@gmail.com. I'm always happy to connect with like-minded individuals.</p>
